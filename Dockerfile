@@ -9,4 +9,3 @@ RUN npm install
 
 # Add your source files
 COPY src .
-COPY config config
