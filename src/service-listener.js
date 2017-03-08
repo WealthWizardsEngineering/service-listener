@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const env = require('./env-vars');
+const logger = require('ww-logging').logger();
 
 const { storeService } = require('./registry-client/store-service');
 const { listenForDeployments } = require('./kubernetes-client/deployment-listener');
@@ -16,11 +17,11 @@ listenForDeployments(env.KUBERNETES_MASTER_URL, env.KUBERNETES_NAMESPACE, env.KU
   getIngress(env.KUBERNETES_MASTER_URL, env.KUBERNETES_NAMESPACE, env.KUBERNETES_USERNAME, env.KUBERNETES_PASSWORD, serviceName)
     .then((response) => {
       const baseUrl = 'https://' + response.spec.rules[0].host + response.spec.rules[0].http.paths[0].path;
-      console.log(baseUrl);
+      logger.info(`Base URL for ${serviceName}: ${baseUrl}`);
       environment.baseUrl = baseUrl;
     })
     .catch((error) => {
-      console.log(error);
+      logger.warn(`Unable to retrieve base URL for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
     });
 
   // const pingUrl = object.object.metadata.annotations["ww-ping-path"];
@@ -44,10 +45,10 @@ listenForDeployments(env.KUBERNETES_MASTER_URL, env.KUBERNETES_NAMESPACE, env.KU
 
   storeService(serviceName, environment)
     .then( service => {
-    console.log('store ok');
+    logger.info(`Service ${serviceName} stored OK`);
   })
     .catch( error => {
-      console.log(`error: ${error}`);
+      logger.warn(`Service ${serviceName} failed to be stored: ${error}`);
   });
 
 });
