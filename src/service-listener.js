@@ -44,7 +44,7 @@ listenForDeployments(env.KUBERNETES_MASTER_URL, env.KUBERNETES_NAMESPACE, env.KU
   // console.log(`${date} Deployment[${serviceName}] status available replicas: ${statusAvailableReplicas}`);
 
   storeService(serviceName, environment)
-    .then( service => {
+    .then( () => {
     logger.info(`Service ${serviceName} stored OK`);
   })
     .catch( error => {
