@@ -6,7 +6,7 @@
   },
   "description": "A script to listen to kubernetes to automatically identify the wealthwizards services",
   "scripts": {
-    "start": "node crawler.js",
+    "start": "node service-listener.js",
     "test:unit": "tape 'test/unit/**/*.spec.js'",
     "test:unit:watch": "nodemon -q -x 'npm run test:unit | tap-spec --silent'",
     "test:unit:coverage": "nyc --report-dir=coverage/unit --reporter=text --reporter=html --reporter=lcov npm run test:unit",

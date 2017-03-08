@@ -19,7 +19,7 @@ services:
   client:
     extends:
       service: node
-    entrypoint: /usr/src/app/src/crawler.js
+    entrypoint: /usr/src/app/src/service-listener.js
     environment:
     - SERVICE_REGISTRY_URL=http://10.10.56.151:3000/service-registry
     - KUBERNETES_MASTER_URL=https://10.28.1.9

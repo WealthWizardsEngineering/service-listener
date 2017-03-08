@@ -16,7 +16,9 @@ const listenForDeployments = ((masterUrl, namespace, username, password, onChang
 
   const jsonStream = new JSONStream();
   const stream = ext.ns.deployments.get({qs: {watch: true}});
-  stream.pipe(jsonStream);
+  stream.on('error', function(err) {
+    console.log(err);
+  }).pipe(jsonStream);
   jsonStream.on('data', object => onChange(object));
 });
 
