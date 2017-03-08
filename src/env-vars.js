@@ -1,5 +1,5 @@
 const envalid = require('envalid')
-const logger = require('./logger')
+const logger = require('ww-logging').logger();
 const { str, num, bool } = envalid;
 
 const env = envalid.cleanEnv(process.env, {
