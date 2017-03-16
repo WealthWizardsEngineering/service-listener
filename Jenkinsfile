@@ -91,9 +91,6 @@ node {
             k8s.config('st')
             k8s.rollout(serviceName, 'st', env.DOCKER_REGISTRY, buildVersion)
 
-        }
-
-        if (env.BRANCH_NAME == "master") {
           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '74a22d50-4bd7-49a3-bc84-2ffe7c9ff597', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
              sh "git config --global user.email ${env.JENKINS_EMAIL}"
              sh "git config --global user.name ${gitExcludedUsers}"
