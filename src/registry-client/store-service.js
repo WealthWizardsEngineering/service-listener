@@ -26,13 +26,14 @@ function updateEnvironmentBaseUrl( service, environmentId, baseUrl ) {
   return false;
 }
 
-const storeService = (serviceName, environment) =>
+const storeService = (serviceName, environment, links = null) =>
 {
   return co(function*() {
     return yield getService(serviceName);
   }).then(function (retreivedService) {
     if (retreivedService == null) {
-      const newService = {_id: serviceName, environments: [ environment ]};
+      const newService = {_id: serviceName, links: links, environments: [ environment ]};
+
       logger.debug('Storing new service: ' + JSON.stringify(newService, null, 2));
       return request({
         url: `${env.SERVICE_REGISTRY_URL}/v1/service`,
@@ -41,8 +42,8 @@ const storeService = (serviceName, environment) =>
         body: newService
       });
     } else {
-
       const updatedService = sanitiseResponse(retreivedService);
+      updatedService.links = links;
 
       if (!updateEnvironmentBaseUrl(updatedService, environment._id, environment.baseUrl)) {
         updatedService.environments.push(environment);

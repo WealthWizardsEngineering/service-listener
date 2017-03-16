@@ -20,6 +20,7 @@ test('store service', t => {
 
     const newFakeService = {
       _id: fakeServiceName,
+      links: null,
       environments: [
         fakeEnvironment
       ]
@@ -65,11 +66,6 @@ test('store service', t => {
     const fakeEnvironment1 =  {
       _id: 'env1',
       baseUrl: 'http://bob'
-    }
-
-    const fakeEnvironment2 =  {
-      _id: 'env2',
-      baseUrl: 'http://bob2'
     }
 
     const existingFakeService = {
@@ -119,7 +115,6 @@ test('store service', t => {
     );
     });
   });
-
 
   t.test('that when the service and environment already exists then the document is put to the service with the new changes', assert => {
 
@@ -313,5 +308,219 @@ test('store service', t => {
     });
   });
 
-});
+  t.test('that when the service does not exist then the document is posted to the service with links', assert => {
 
+    assert.plan(3);
+    const sandbox = sinon.sandbox.create();
+    const requestStub = sandbox.stub().resolves();
+
+    const fakeServiceName = 'my-service-name';
+
+    const fakeEnvironment =  {
+      _id: 'env1',
+      baseUrl: 'http://bob'
+    }
+
+    const fakeLinks = [
+      {
+        _id: 'fakeLink1',
+        url: 'fakeUrl1'
+      },
+      {
+        _id: 'fakeLink2',
+        url: 'fakeUrl2'
+      },
+    ]
+
+    const newFakeService = {
+      _id: fakeServiceName,
+      links: fakeLinks,
+      environments: [
+        fakeEnvironment
+      ]
+    }
+
+    const { storeService } = proxyquire('../../../src/registry-client/store-service', {
+      './get-service': {
+        getService: (serviceName) => {
+          assert.equal(serviceName, fakeServiceName, 'the service name passed to getService should match the service name being stored');
+          return Promise.resolve();
+        },
+      },
+      '../env-vars': {
+        SERVICE_REGISTRY_URL: 'http://service-registry'
+      },
+      'request-promise-native': requestStub,
+    });
+
+    storeService(fakeServiceName, fakeEnvironment, fakeLinks)
+      .then(() => {
+      assert.equals(requestStub.callCount, 1, 'API called once');
+      assert.deepEquals(
+        requestStub.args[0][0],
+        {
+          url: 'http://service-registry/v1/service',
+          method: 'POST',
+          json: true,
+          body: newFakeService
+        },
+        'POST request is correct'
+      );
+    });
+  });
+
+  t.test('that when the service already exists without links then the document is put to the service with the new changes including links', assert => {
+
+    assert.plan(3);
+    const sandbox = sinon.sandbox.create();
+    const requestStub = sandbox.stub().resolves();
+
+    const fakeServiceName = 'my-service-name';
+
+    const fakeEnvironment1 =  {
+      _id: 'env1',
+      baseUrl: 'http://bob'
+    }
+
+    const existingFakeService = {
+      _id: fakeServiceName,
+      __v: 0,
+      createdAt: "2017-03-06T14:17:21.850Z",
+      updatedAt: "2017-03-06T14:17:21.850Z",
+      links: null,
+      environments: [
+        fakeEnvironment1
+      ]
+    }
+
+    const fakeLinks = [
+      {
+        _id: 'fakeLink1',
+        url: 'fakeUrl1'
+      },
+      {
+        _id: 'fakeLink2',
+        url: 'fakeUrl2'
+      },
+    ]
+
+    const updatedFakeService = {
+      _id: fakeServiceName,
+      links: fakeLinks,
+      environments: [
+        fakeEnvironment1
+      ]
+    }
+
+    const { storeService } = proxyquire('../../../src/registry-client/store-service', {
+      './get-service': {
+        getService: (serviceName) => {
+          assert.equal(serviceName, fakeServiceName, 'the service name passed to getService should match the service name being stored');
+          return Promise.resolve(existingFakeService);
+        },
+      },
+      '../env-vars': {
+        SERVICE_REGISTRY_URL: 'http://service-registry'
+      },
+      'request-promise-native': requestStub,
+    });
+
+    storeService(fakeServiceName, fakeEnvironment1, fakeLinks)
+      .then(() => {
+        assert.equals(requestStub.callCount, 1, 'API called once');
+        assert.deepEquals(
+        requestStub.args[0][0],
+        {
+          url: 'http://service-registry/v1/service/my-service-name',
+          method: 'PUT',
+          json: true,
+          body: updatedFakeService
+        },
+        'PUT request is correct'
+      );
+    });
+  });
+
+  t.test('that when the service already exists with links then the document is put to the service with the new changes replacing all links', assert => {
+
+    assert.plan(3);
+    const sandbox = sinon.sandbox.create();
+    const requestStub = sandbox.stub().resolves();
+
+    const fakeServiceName = 'my-service-name';
+
+    const fakeEnvironment1 =  {
+      _id: 'env1',
+      baseUrl: 'http://bob'
+    }
+
+    const existingFakeLinks = [
+      {
+        _id: 'oldFakeLink1',
+        url: 'oldFakeUrl1'
+      },
+      {
+        _id: 'fakeLink2',
+        url: 'fakeUrl2'
+      },
+    ]
+
+    const existingFakeService = {
+      _id: fakeServiceName,
+      __v: 0,
+      createdAt: "2017-03-06T14:17:21.850Z",
+      updatedAt: "2017-03-06T14:17:21.850Z",
+      links: existingFakeLinks,
+      environments: [
+        fakeEnvironment1
+      ]
+    }
+
+    const newFakeLinks = [
+      {
+        _id: 'newFakeLink1',
+        url: 'newFakeUrl1'
+      },
+      {
+        _id: 'fakeLink2',
+        url: 'fakeUrl2'
+      },
+    ]
+
+    const updatedFakeService = {
+      _id: fakeServiceName,
+      links: newFakeLinks,
+      environments: [
+        fakeEnvironment1
+      ]
+    }
+
+    const { storeService } = proxyquire('../../../src/registry-client/store-service', {
+      './get-service': {
+        getService: (serviceName) => {
+          assert.equal(serviceName, fakeServiceName, 'the service name passed to getService should match the service name being stored');
+          return Promise.resolve(existingFakeService);
+        },
+      },
+      '../env-vars': {
+        SERVICE_REGISTRY_URL: 'http://service-registry'
+      },
+      'request-promise-native': requestStub,
+    });
+
+    storeService(fakeServiceName, fakeEnvironment1, newFakeLinks)
+      .then(() => {
+        assert.equals(requestStub.callCount, 1, 'API called once');
+        assert.deepEquals(
+          requestStub.args[0][0],
+          {
+            url: 'http://service-registry/v1/service/my-service-name',
+            method: 'PUT',
+            json: true,
+            body: updatedFakeService
+          },
+          'PUT request is correct'
+        );
+      });
+  });
+});
