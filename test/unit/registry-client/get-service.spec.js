@@ -18,15 +18,15 @@ test('that the correct params are sent to the get service api call', t => {
 
   getService('my-service-name')
     .then(() => {
-    t.equals(requestStub.callCount, 1, 'API called once');
-  t.deepEquals(
-    requestStub.args[0][0],
-    {
-      url: 'http://service-registry/v1/service/my-service-name',
-      method: 'GET',
-      json: true,
-    },
-    'GET request is correct'
-  );
-  });
+      t.equals(requestStub.callCount, 1, 'API called once');
+      t.deepEquals(
+        requestStub.args[0][0],
+        {
+          url: 'http://service-registry/v1/service/my-service-name',
+          method: 'GET',
+          json: true,
+        },
+        'GET request is correct'
+      );
+    });
 });

@@ -57,9 +57,8 @@ const storeService = (serviceName, environment, links = null) =>
         body: updatedService
       });
     }
-  }).catch((e) => {
-    logger.error(`${e}`);
-    // TODO: throw!
+  }).catch((error) => {
+    logger.error(`Failed to store service [${environment}/${serviceName}]: ${error}`);
   });
 }
 
