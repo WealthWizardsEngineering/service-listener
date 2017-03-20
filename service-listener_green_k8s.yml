@@ -37,6 +37,8 @@ spec:
         env:
         - name: SERVICE_REGISTRY_URL
           value: https://apps.st.wealthwizards.io/service-registry
+        - name: VERSION_SERVICE_URL
+          value: https://apps.st.wealthwizards.io/version-service
         - name: KUBERNETES_MASTER_URL
           value: https://10.28.1.9
         - name: KUBERNETES_NAMESPACE
