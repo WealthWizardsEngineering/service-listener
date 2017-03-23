@@ -12,7 +12,7 @@ const updateServiceRegistry = ((deploymentObject) => {
   getIngress(env.KUBERNETES_MASTER_URL, env.KUBERNETES_NAMESPACE, env.KUBERNETES_USERNAME, env.KUBERNETES_PASSWORD, serviceName)
     .then((response) => {
       const baseUrl = 'https://' + response.spec.rules[0].host + response.spec.rules[0].http.paths[0].path;
-      logger.info(`Base URL for ${serviceName}: ${baseUrl}`);
+      logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
       addDefaultLinks (links);
       createService(namespace, serviceName, baseUrl, links);
     })
@@ -31,7 +31,7 @@ function createService(namespace, serviceName, baseUrl, links = null) {
 
   storeService(serviceName, environment, links)
     .then( () => {
-      logger.info(`Service ${serviceName} stored OK`);
+      logger.debug(`Service ${environment}/${serviceName} stored OK`);
     })
     .catch( error => {
       logger.warn(`Service ${serviceName} failed to be stored: ${error}`);

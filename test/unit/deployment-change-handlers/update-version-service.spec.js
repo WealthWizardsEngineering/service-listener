@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const sinonAsPromised = require('sinon-as-promised');
 const proxyquire = require('proxyquire').noCallThru();
 
-test('update-service-registry', t => {
+test('update-version-service', t => {
 
   t.test('that when a deployment changes then the service details are retrieved, the current version is retrieved and stored in the version service', assert => {
     assert.plan(5);
