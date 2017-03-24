@@ -21,7 +21,7 @@ const storeVersion = (environment, serviceName, version) =>
 
 function postNewService(environment, application_name, version) {
   const newVersionRecord = {environment, application_name, version};
-  logger.info(`Storing new version: ` + JSON.stringify(newVersionRecord, null, 2));
+  logger.debug(`Storing new version: ` + JSON.stringify(newVersionRecord, null, 2));
   return request({
     url: `${env.VERSION_SERVICE_URL}/v1/version`,
     method: 'POST',

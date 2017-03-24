@@ -11,6 +11,6 @@ const env = envalid.cleanEnv(process.env, {
   VERSION_SERVICE_URL: str(),
 });
 
-logger.info('Required environment variables are present');
+logger.debug('Required environment variables are present');
 
 module.exports = env;
