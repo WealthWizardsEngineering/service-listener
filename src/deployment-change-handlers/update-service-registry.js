@@ -8,22 +8,23 @@ const updateServiceRegistry = ((deploymentObject) => {
   const namespace = deploymentObject.object.metadata.namespace;
   const serviceName = deploymentObject.object.metadata.name;
   const links = extractLinksFrom(deploymentObject.object.metadata.annotations);
+  const tags = extractTagsFrom(deploymentObject.object.metadata.annotations);
 
   getIngress(env.KUBERNETES_MASTER_URL, env.KUBERNETES_NAMESPACE, env.KUBERNETES_USERNAME, env.KUBERNETES_PASSWORD, serviceName)
     .then((response) => {
       const baseUrl = 'https://' + response.spec.rules[0].host + response.spec.rules[0].http.paths[0].path;
       logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
       addDefaultLinks (links);
-      createService(namespace, serviceName, links, baseUrl);
+      createService(namespace, serviceName, links, tags, baseUrl);
     })
     .catch((error) => {
       logger.warn(`Unable to retrieve base URL for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
-      createService(namespace, serviceName, links);
+      createService(namespace, serviceName, links, tags);
     });
 
 });
 
-function createService(namespace, serviceName, links, baseUrl = null) {
+function createService(namespace, serviceName, links, tags, baseUrl = null) {
   var environment
   if (baseUrl == null) {
     environment = {
@@ -36,7 +37,7 @@ function createService(namespace, serviceName, links, baseUrl = null) {
     }
   }
 
-  storeService(serviceName, environment, links)
+  storeService(serviceName, environment, links, tags)
     .then( () => {
       logger.debug(`Service ${environment}/${serviceName} stored OK`);
     })
@@ -62,6 +63,15 @@ function extractLinksFrom(annotations) {
   }
   return links;
 }
+
+function extractTagsFrom(annotations) {
+  if (annotations == null || annotations.tags == null){
+    return null;
+  } else {
+    return annotations.tags.split(',');
+  }
+}
+
 
 function addDefaultLinks(links) {
   addDefaultLink(links, 'ping', '/ping')
