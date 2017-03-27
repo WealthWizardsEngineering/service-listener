@@ -14,19 +14,26 @@ const updateServiceRegistry = ((deploymentObject) => {
       const baseUrl = 'https://' + response.spec.rules[0].host + response.spec.rules[0].http.paths[0].path;
       logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
       addDefaultLinks (links);
-      createService(namespace, serviceName, baseUrl, links);
+      createService(namespace, serviceName, links, baseUrl);
     })
     .catch((error) => {
       logger.warn(`Unable to retrieve base URL for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
-      createService(namespace, serviceName, 'http://unknown', links);
+      createService(namespace, serviceName, links);
     });
 
 });
 
-function createService(namespace, serviceName, baseUrl, links = null) {
-  const environment = {
-    _id: namespace,
-    baseUrl: baseUrl
+function createService(namespace, serviceName, links, baseUrl = null) {
+  var environment
+  if (baseUrl == null) {
+    environment = {
+      _id: namespace
+    }
+  } else {
+    environment = {
+      _id: namespace,
+      baseUrl: baseUrl
+    }
   }
 
   storeService(serviceName, environment, links)

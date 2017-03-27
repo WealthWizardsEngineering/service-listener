@@ -78,7 +78,7 @@ test('update-service-registry', t => {
   });
 
 
-  t.test('that when a deployment changes and there is no ingress definition then an unknown base url is stored', assert => {
+  t.test('that when a deployment changes and there is no ingress definition then no base url is stored', assert => {
 
     assert.plan(8);
 
@@ -93,7 +93,6 @@ test('update-service-registry', t => {
 
     const fakeEnvironment = {
       _id: 'fakeNamespace',
-      baseUrl: 'http://unknown',
     }
 
     const {updateServiceRegistry} = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
@@ -149,7 +148,6 @@ test('update-service-registry', t => {
 
     const fakeEnvironment = {
       _id: 'fakeNamespace',
-      baseUrl: 'http://unknown',
     }
 
     const fakeLinks = [
