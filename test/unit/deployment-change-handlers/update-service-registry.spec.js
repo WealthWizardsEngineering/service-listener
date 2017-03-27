@@ -78,7 +78,7 @@ test('update-service-registry', t => {
   });
 
 
-  t.test('that when a deployment changes and there is no ingress definition then an unknown base url is stored', assert => {
+  t.test('that when a deployment changes and there is no ingress definition then no base url is stored', assert => {
 
     assert.plan(8);
 
@@ -93,7 +93,6 @@ test('update-service-registry', t => {
 
     const fakeEnvironment = {
       _id: 'fakeNamespace',
-      baseUrl: 'http://unknown',
     }
 
     const {updateServiceRegistry} = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
@@ -149,7 +148,6 @@ test('update-service-registry', t => {
 
     const fakeEnvironment = {
       _id: 'fakeNamespace',
-      baseUrl: 'http://unknown',
     }
 
     const fakeLinks = [
@@ -197,4 +195,50 @@ test('update-service-registry', t => {
     updateServiceRegistry(fakeDeployment)
   });
 
+  t.test('that when a deployment changes and there are tags defined as annotations then the tags are stored', assert => {
+
+    assert.plan(7);
+
+    const fakeDeployment = {
+      object: {
+        metadata: {
+          annotations: {
+            tags: 'tag1,tag2,tag3'
+          },
+          name: 'fakeServiceName',
+          namespace: 'fakeNamespace',
+        }
+      }
+    }
+
+    const fakeTags = [ 'tag1', 'tag2', 'tag3']
+
+    const {updateServiceRegistry} = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
+      '../kubernetes-client/get-ingress': {
+        getIngress: (masterUrl, namespace, username, password, serviceName) => {
+          assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
+          assert.equal(namespace, 'test-namespace', 'expected namespace to be passed through');
+          assert.equal(username, 'test-username', 'expected username to be passed through');
+          assert.equal(password, 'test-password', 'expected password to be passed through');
+          assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
+          return Promise.reject('does not exist');
+        },
+      },
+      '../registry-client/store-service': {
+        storeService: (serviceName, environment, links, tags) => {
+          assert.equal(serviceName, 'fakeServiceName', 'expected the service name to be stored')
+          assert.deepEqual(tags, fakeTags, 'expected tags to be stored')
+          return Promise.resolve();
+        },
+      },
+      '../env-vars': {
+        KUBERNETES_MASTER_URL: 'test-masterUrl',
+        KUBERNETES_NAMESPACE: 'test-namespace',
+        KUBERNETES_USERNAME: 'test-username',
+        KUBERNETES_PASSWORD: 'test-password',
+      },
+    });
+
+    updateServiceRegistry(fakeDeployment)
+  });
 });
