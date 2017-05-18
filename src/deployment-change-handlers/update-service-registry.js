@@ -12,7 +12,10 @@ const updateServiceRegistry = ((deploymentObject) => {
 
   getIngress(env.KUBERNETES_MASTER_URL, env.KUBERNETES_NAMESPACE, env.KUBERNETES_USERNAME, env.KUBERNETES_PASSWORD, serviceName)
     .then((response) => {
-      const baseUrl = 'https://' + response.spec.rules[0].host + response.spec.rules[0].http.paths[0].path;
+      var baseUrl = 'https://' + response.spec.rules[0].host;
+      if (response.spec.rules[0].http.paths[0].path !== '/') {
+        baseUrl += response.spec.rules[0].http.paths[0].path;
+      }
       logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
       addDefaultLinks (links);
       createService(namespace, serviceName, links, tags, baseUrl);
