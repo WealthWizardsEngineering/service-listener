@@ -262,8 +262,8 @@ test('update-service-registry', t => {
         metadata: {
           annotations: {
             'something-else': 'and the value',
-            'link-ping': 'false',
-            'link-health': 'false',
+            'link-ping': false,
+            'link-health': false,
             'link-to-something-else': 'fake-link',
             'anotherone': 'to ignore'
           },

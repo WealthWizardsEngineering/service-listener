@@ -86,7 +86,7 @@ function addDefaultLink(links, name, defaultUrl) {
   links.forEach(function(link, index, object) {
     if (link._id === name){
       needsLink = false;
-      if (link.url === 'false') {
+      if (link.url === 'false' || link.url === false) {
         object.splice(index, 1);
       }
     }
