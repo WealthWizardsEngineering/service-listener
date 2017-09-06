@@ -13,12 +13,12 @@ const getLatestVersion = (environment, serviceName) => {
       if (response.length > 0) {
         resolve(response[0]);
       } else {
-        logger.warn(`Could not find any matching versions for ${environment}/${serviceName}`)
+        logger.inProdEnv(`Could not find any matching versions for ${environment}/${serviceName}`)
         resolve(null);
       }
     })
     .catch((error) => {
-      logger.error(`Error getting latest version: ${environment}/${serviceName} - ${error}`);
+      logger.toInvestigateTomorrow(`Error getting latest version: ${environment}/${serviceName} - ${error}`);
     });
   });
 }
