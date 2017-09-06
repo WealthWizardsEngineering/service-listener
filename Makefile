@@ -23,6 +23,14 @@ unit-test:
 	${MAKEFILE_SUDO_COMMAND} ${DOCKER_RUN} unit-test
 .PHONY: unit-test
 
+component-test:
+	echo "not required"
+.PHONY: component-test
+
+release:
+	@npm version patch
+.PHONY: release
+
 dependency-check:
 	./node_modules/.bin/nsp check
 .PHONY: dependency-check
