@@ -16,12 +16,12 @@ const updateServiceRegistry = ((deploymentObject) => {
       if (response.spec.rules[0].http.paths[0].path !== '/') {
         baseUrl += response.spec.rules[0].http.paths[0].path;
       }
-      logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
+      logger.inTestEnv(`Base URL for ${serviceName}: ${baseUrl}`);
       addDefaultLinks (links);
       createService(namespace, serviceName, links, tags, baseUrl);
     })
     .catch((error) => {
-      logger.warn(`Unable to retrieve base URL for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
+      logger.inProdEnv(`Unable to retrieve base URL for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
       createService(namespace, serviceName, links, tags);
     });
 
@@ -42,10 +42,10 @@ function createService(namespace, serviceName, links, tags, baseUrl = null) {
 
   storeService(serviceName, environment, links, tags)
     .then( () => {
-      logger.debug(`Service ${environment}/${serviceName} stored OK`);
+      logger.inTestEnv(`Service ${environment}/${serviceName} stored OK`);
     })
     .catch( error => {
-      logger.warn(`Service ${serviceName} failed to be stored: ${error}`);
+      logger.toInvestigateTomorrow(`Service ${serviceName} failed to be stored: ${error}`);
     });
 }
 

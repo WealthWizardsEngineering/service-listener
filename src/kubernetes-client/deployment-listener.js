@@ -18,7 +18,7 @@ const listenForDeployments = ((masterUrl, namespace, username, password, onChang
   const jsonStream = new JSONStream();
   const stream = ext.ns.deployments.get({qs: {watch: true}});
   stream.on('error', function(err) {
-    logger.error(`There was a problem with the Kubernetes deployment websocket: ${err}`);
+    logger.toInvestigateTomorrow(`There was a problem with the Kubernetes deployment websocket: ${err}`);
   }).pipe(jsonStream);
   jsonStream.on('data', object => onChange(object));
 });
