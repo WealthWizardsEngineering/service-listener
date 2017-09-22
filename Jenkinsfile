@@ -4,4 +4,4 @@ fileLoader.withGit('https://bitbucket.org/wealth-wizards/jenkinsfile-commons.git
   build = fileLoader.load('build');
 }
 
-def result = build.build('service-listener');
+def result = build.build('service-listener', ['st', 'lv-green', 'ww-green']);
