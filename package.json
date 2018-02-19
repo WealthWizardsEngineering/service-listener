@@ -25,7 +25,6 @@
     "nyc": "11.2.1",
     "proxyquire": "1.8.0",
     "sinon": "3.3.0",
-    "sinon-as-promised": "4.0.3",
     "tape": "4.8.0"
   },
   "dependencies": {

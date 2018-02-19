@@ -1,6 +1,5 @@
 const test = require('tape');
 const sinon = require('sinon');
-const sinonAsPromised = require('sinon-as-promised');
 const proxyquire = require('proxyquire').noCallThru();
 
 test('that the correct params are sent to the get service api call', t => {

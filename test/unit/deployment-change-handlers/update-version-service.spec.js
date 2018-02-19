@@ -1,6 +1,5 @@
 const test = require('tape');
 const sinon = require('sinon');
-const sinonAsPromised = require('sinon-as-promised');
 const proxyquire = require('proxyquire').noCallThru();
 
 test('update-version-service', t => {
