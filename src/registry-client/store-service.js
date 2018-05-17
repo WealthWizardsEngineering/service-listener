@@ -2,7 +2,7 @@ const request = require('request-promise-native');
 const { getService } = require('./get-service');
 const env = require('../env-vars');
 const co = require('co');
-const logger = require('ww-logging').logger();
+const logger = require('../logger');
 
 function sanitiseResponse( service ) {
   var sanitisedService = JSON.parse(JSON.stringify(service));
@@ -34,7 +34,7 @@ const storeService = (serviceName, environment, links = null, tags = null) =>
     if (retreivedService == null) {
       const newService = {_id: serviceName, links: links, tags: tags, environments: [ environment ]};
 
-      logger.inTestEnv('Storing new service: ' + JSON.stringify(newService, null, 2));
+      logger.debug('Storing new service: ' + JSON.stringify(newService, null, 2));
       return request({
         url: `${env.SERVICE_REGISTRY_URL}/v1/service`,
         method: 'POST',
@@ -49,7 +49,7 @@ const storeService = (serviceName, environment, links = null, tags = null) =>
       if (!updateEnvironmentBaseUrl(updatedService, environment._id, environment.baseUrl)) {
         updatedService.environments.push(environment);
       }
-      logger.inTestEnv('Updating existing service: ' + JSON.stringify(updatedService, null, 2));
+      logger.debug('Updating existing service: ' + JSON.stringify(updatedService, null, 2));
 
       return request({
         url: `${env.SERVICE_REGISTRY_URL}/v1/service/${serviceName}`,
@@ -59,7 +59,7 @@ const storeService = (serviceName, environment, links = null, tags = null) =>
       });
     }
   }).catch((error) => {
-    logger.toInvestigateTomorrow(`Failed to store service [${environment}/${serviceName}]: ${error}`);
+    logger.warn(`Failed to store service [${environment}/${serviceName}]: ${error}`);
   });
 }
 

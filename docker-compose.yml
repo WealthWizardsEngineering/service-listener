@@ -1,7 +1,7 @@
 version: '2'
 services:
   node:
-    image: wealthwizardsengineering/ww-base-node:alpine-latest
+    image: quay.io/wealthwizards/ww-base-node:alpine-6
     volumes:
       - .:/usr/src/app:z
     working_dir: /usr/src/app
@@ -14,7 +14,7 @@ services:
   unit-test:
     extends:
       service: npm
-    command: run test:unit:report
+    command: run test:unit
 
   client:
     extends:
@@ -22,7 +22,7 @@ services:
     entrypoint: /usr/src/app/src/service-listener.js
     environment:
     - WW_REQUEST_LOGGER_LEVEL=trace
-    - SERVICE_REGISTRY_URL=http://10.10.56.151:3000/service-registry
-    - VERSION_SERVICE_URL=http://10.10.56.151:3001/version-service
-    - KUBERNETES_MASTER_URL=https://10.28.1.9
+    - SERVICE_REGISTRY_URL=http://1.2.3.5:3000/service-registry
+    - VERSION_SERVICE_URL=http://1.2.3.5:3001/version-service
+    - KUBERNETES_MASTER_URL=https://1.2.3.4
     - KUBERNETES_NAMESPACE=st

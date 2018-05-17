@@ -1,5 +1,5 @@
 const env = require('../env-vars');
-const logger = require('ww-logging').logger();
+const logger = require('../logger');
 
 const { getIngress } = require('../kubernetes-client/get-ingress');
 const { storeService } = require('../registry-client/store-service');
@@ -16,12 +16,12 @@ const updateServiceRegistry = ((deploymentObject) => {
       if (response.spec.rules[0].http.paths[0].path !== '/') {
         baseUrl += response.spec.rules[0].http.paths[0].path;
       }
-      logger.inTestEnv(`Base URL for ${serviceName}: ${baseUrl}`);
+      logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
       addDefaultLinks (links);
       createService(namespace, serviceName, links, tags, baseUrl);
     })
     .catch((error) => {
-      logger.inProdEnv(`Unable to retrieve base URL for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
+      logger.info(`Unable to retrieve base URL for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
       createService(namespace, serviceName, links, tags);
     });
 
@@ -42,10 +42,10 @@ function createService(namespace, serviceName, links, tags, baseUrl = null) {
 
   storeService(serviceName, environment, links, tags)
     .then( () => {
-      logger.inTestEnv(`Service ${environment}/${serviceName} stored OK`);
+      logger.debug(`Service ${environment}/${serviceName} stored OK`);
     })
     .catch( error => {
-      logger.toInvestigateTomorrow(`Service ${serviceName} failed to be stored: ${error}`);
+      logger.warn(`Service ${serviceName} failed to be stored: ${error}`);
     });
 }
 

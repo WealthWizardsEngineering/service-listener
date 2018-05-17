@@ -1,5 +1,5 @@
 const envalid = require('envalid')
-const logger = require('ww-logging').logger();
+const logger = require('./logger');
 const { str, num, bool } = envalid;
 
 const env = envalid.cleanEnv(process.env, {
@@ -11,6 +11,6 @@ const env = envalid.cleanEnv(process.env, {
   VERSION_SERVICE_URL: str(),
 });
 
-logger.inProdEnv('Required environment variables are present');
+logger.info('Required environment variables are present');
 
 module.exports = env;

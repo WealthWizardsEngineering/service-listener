@@ -2,7 +2,7 @@ const request = require('request-promise-native');
 const { getLatestVersion } = require('./get-latest-version');
 const env = require('../env-vars');
 const co = require('co');
-const logger = require('ww-logging').logger();
+const logger = require('../logger');
 
 const storeVersion = (environment, serviceName, version) =>
 {
@@ -10,18 +10,18 @@ const storeVersion = (environment, serviceName, version) =>
     return yield getLatestVersion(environment, serviceName);
   }).then(function (retrievedVersion) {
     if (retrievedVersion != null && retrievedVersion.version === version) {
-      logger.inTestEnv(`The version hasn't changed [${environment}/${serviceName}]`)
+      logger.debug(`The version hasn't changed [${environment}/${serviceName}]`)
     } else {
       return postNewService(environment, serviceName, version);
     }
   }).catch((error) => {
-    logger.toInvestigateTomorrow(`Failed to store version [${environment}/${serviceName}]: ${error}`);
+    logger.warn(`Failed to store version [${environment}/${serviceName}]: ${error}`);
   });
 }
 
 function postNewService(environment, application_name, version) {
   const newVersionRecord = {environment, application_name, version};
-  logger.inTestEnv(`Storing new version: ` + JSON.stringify(newVersionRecord, null, 2));
+  logger.debug(`Storing new version: ` + JSON.stringify(newVersionRecord, null, 2));
   return request({
     url: `${env.VERSION_SERVICE_URL}/v1/version`,
     method: 'POST',

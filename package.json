@@ -2,9 +2,9 @@
   "name": "service-listener",
   "version": "0.0.22",
   "engines": {
-    "node": "6.2.0"
+    "node": "^6.14.2"
   },
-  "description": "A script to listen to kubernetes to automatically identify the wealthwizards services",
+  "description": "A script to listen to kubernetes to automatically identify running deployments/services",
   "homepage": "https://github.com/WealthWizardsEngineering/service-listener",
   "repository": {
     "type": "git",
@@ -13,11 +13,10 @@
   "scripts": {
     "start": "node service-listener.js",
     "test:unit": "tape 'test/unit/**/*.spec.js'",
-    "test:unit:watch": "nodemon -q -x 'npm run test:unit | tap-spec --silent'",
     "test:unit:coverage": "nyc --report-dir=coverage/unit --reporter=text --reporter=html --reporter=lcov npm run test:unit",
-    "test:unit:report": "npm run test:unit:coverage | tee /dev/stderr | node_modules/tap-xunit/bin/tap-xunit > unit-test-report.xml",
     "lint": "eslint *.js",
-    "lint:fix": "eslint --fix *.js"
+    "lint:fix": "eslint --fix *.js",
+    "dependency-check": "nsp check"
   },
   "author": "Wealth Wizards",
   "license": "MIT",
@@ -33,12 +32,12 @@
     "tape": "4.9.0"
   },
   "dependencies": {
+    "bunyan": "1.8.12",
     "co": "4.6.0",
     "envalid": "4.1.4",
     "json-stream": "^1.0.0",
     "kubernetes-client": "^3.8.0",
     "request": "^2.82.0",
-    "request-promise-native": "1.0.5",
-    "ww-logging": "0.4.8"
+    "request-promise-native": "1.0.5"
   }
 }

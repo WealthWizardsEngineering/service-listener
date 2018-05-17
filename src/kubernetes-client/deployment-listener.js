@@ -1,6 +1,6 @@
 const Api = require('kubernetes-client');
 const JSONStream = require('json-stream');
-const logger = require('ww-logging').logger();
+const logger = require('../logger');
 
 const listenForDeployments = ((masterUrl, namespace, username, password, onChange) =>
 {
@@ -18,7 +18,7 @@ const listenForDeployments = ((masterUrl, namespace, username, password, onChang
   const jsonStream = new JSONStream();
   const stream = ext.ns.deployments.get({qs: {watch: true}});
   stream.on('error', function(err) {
-    logger.toInvestigateTomorrow(`There was a problem with the Kubernetes deployment websocket: ${err}`);
+    logger.warn(`There was a problem with the Kubernetes deployment websocket: ${err}`);
   }).pipe(jsonStream);
   jsonStream.on('data', object => onChange(object));
 });

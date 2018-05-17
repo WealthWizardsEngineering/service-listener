@@ -8,10 +8,9 @@ DOCKER_RUN ?= ${DOCKER_COMPOSE} run --rm
 DOCKER_BASE_IMAGE = node
 NPM ?= ${DOCKER_RUN} -e NODE_ENV=${NODE_ENV} ${DOCKER_BASE_IMAGE} npm
 
-all: clean-up install
+all: clean-up install lint unit-test
 
 install:
-	${MAKEFILE_SUDO_COMMAND} ${NPM} install tap-xunit
 	${MAKEFILE_SUDO_COMMAND} ${NPM} install
 .PHONY: install
 
@@ -23,16 +22,12 @@ unit-test:
 	${MAKEFILE_SUDO_COMMAND} ${DOCKER_RUN} unit-test
 .PHONY: unit-test
 
-component-test:
-	echo "not required"
-.PHONY: component-test
-
 release:
 	@npm version patch
 .PHONY: release
 
 dependency-check:
-	./node_modules/.bin/nsp check
+	${MAKEFILE_SUDO_COMMAND} ${NPM} run dependency-check
 .PHONY: dependency-check
 
 run:

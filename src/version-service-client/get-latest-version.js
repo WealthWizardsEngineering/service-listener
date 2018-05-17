@@ -1,6 +1,6 @@
 const request = require('request-promise-native');
 const env = require('../env-vars');
-const logger = require('ww-logging').logger();
+const logger = require('../logger');
 
 const getLatestVersion = (environment, serviceName) => {
   return new Promise(function(resolve, reject) {
@@ -13,12 +13,12 @@ const getLatestVersion = (environment, serviceName) => {
       if (response.length > 0) {
         resolve(response[0]);
       } else {
-        logger.inProdEnv(`Could not find any matching versions for ${environment}/${serviceName}`)
+        logger.info(`Could not find any matching versions for ${environment}/${serviceName}`)
         resolve(null);
       }
     })
     .catch((error) => {
-      logger.toInvestigateTomorrow(`Error getting latest version: ${environment}/${serviceName} - ${error}`);
+      logger.warn(`Error getting latest version: ${environment}/${serviceName} - ${error}`);
     });
   });
 }
