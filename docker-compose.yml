@@ -3,7 +3,7 @@ services:
   node:
     image: wealthwizardsengineering/ww-base-node:alpine-latest
     volumes:
-      - ./:/usr/src/app:z
+      - .:/usr/src/app:z
     working_dir: /usr/src/app
 
   npm:
