@@ -44,5 +44,5 @@ This user has been granted readonly access to all APIs, this may be locked down 
 ## Running
 
 ```
-docker run  -e SERVICE_REGISTRY_URL=https://service-registry  -e VERSION_SERVICE_URL=https://version-service  -e KUBERNETES_MASTER_URL=https://kubernetes-api -e KUBERNETES_NAMESPACE=default -e KUBERNETES_USERNAME=my-user =e KUBERNETES_PASSWORD=my-password quay.io/wealthwizards/service-listener
+docker run -e SERVICE_REGISTRY_URL=https://service-registry -e VERSION_SERVICE_URL=https://version-service -e KUBERNETES_MASTER_URL=https://kubernetes-api -e KUBERNETES_NAMESPACE=default -e KUBERNETES_USERNAME=my-user -e KUBERNETES_PASSWORD=my-password quay.io/wealthwizards/service-listener
 ```
