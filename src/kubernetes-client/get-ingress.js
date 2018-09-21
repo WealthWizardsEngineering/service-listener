@@ -1,19 +1,18 @@
 const { Extensions } = require('kubernetes-client');
 
-const getIngress = ((masterUrl, namespace, username, password, ingressName) =>
-{
+const getIngress = ((masterUrl, namespace, username, password, ingressName) => {
   const ext = new Extensions({
     url: masterUrl,
     version: 'v1beta1',
-    namespace: namespace,
+    namespace,
     insecureSkipTlsVerify: true,
     auth: {
       user: username,
-      pass: password
-    }
+      pass: password,
+    },
   });
 
-  return new Promise(function(resolve, reject) {
+  return new Promise(((resolve, reject) => {
     ext.ns.ingress(ingressName).get((err, result) => {
       if (err) {
         reject(err);
@@ -21,7 +20,7 @@ const getIngress = ((masterUrl, namespace, username, password, ingressName) =>
         resolve(result);
       }
     });
-  });
+  }));
 });
 
 module.exports = {

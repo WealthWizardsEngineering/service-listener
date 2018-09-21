@@ -1,6 +1,7 @@
-const envalid = require('envalid')
+const envalid = require('envalid');
 const logger = require('./logger');
-const { str, num, bool } = envalid;
+
+const { str } = envalid;
 
 const env = envalid.cleanEnv(process.env, {
   SERVICE_REGISTRY_URL: str(),

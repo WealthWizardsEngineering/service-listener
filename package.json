@@ -2,7 +2,7 @@
   "name": "service-listener",
   "version": "0.0.25",
   "engines": {
-    "node": "^6.14.2"
+    "node": "^8"
   },
   "description": "A script to listen to kubernetes to automatically identify running deployments/services",
   "homepage": "https://github.com/WealthWizardsEngineering/service-listener",
@@ -14,8 +14,8 @@
     "start": "node service-listener.js",
     "test:unit": "tape 'test/unit/**/*.spec.js'",
     "test:unit:coverage": "nyc --report-dir=coverage/unit --reporter=text --reporter=html --reporter=lcov npm run test:unit",
-    "lint": "eslint *.js",
-    "lint:fix": "eslint --fix *.js",
+    "lint": "eslint src test",
+    "lint:fix": "eslint --fix src test",
     "dependency-check": "nsp check"
   },
   "author": "Wealth Wizards",

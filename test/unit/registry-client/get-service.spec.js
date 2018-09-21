@@ -3,14 +3,13 @@ const sinon = require('sinon');
 const proxyquire = require('proxyquire').noCallThru();
 
 test('that the correct params are sent to the get service api call', t => {
-
   t.plan(2);
   const sandbox = sinon.sandbox.create();
   const requestStub = sandbox.stub().resolves();
 
   const { getService } = proxyquire('../../../src/registry-client/get-service', {
     '../env-vars': {
-      SERVICE_REGISTRY_URL: 'http://service-registry'
+      SERVICE_REGISTRY_URL: 'http://service-registry',
     },
     'request-promise-native': requestStub,
   });

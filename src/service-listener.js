@@ -5,9 +5,15 @@ const { listenForDeployments } = require('./kubernetes-client/deployment-listene
 const { updateServiceRegistry } = require('./deployment-change-handlers/update-service-registry');
 const { updateVersionService } = require('./deployment-change-handlers/update-version-service');
 
-listenForDeployments(env.KUBERNETES_MASTER_URL, env.KUBERNETES_NAMESPACE, env.KUBERNETES_USERNAME, env.KUBERNETES_PASSWORD, onDeploymentChange);
-
 function onDeploymentChange(deploymentObject) {
   updateServiceRegistry(deploymentObject);
   updateVersionService(deploymentObject);
 }
+
+listenForDeployments(
+  env.KUBERNETES_MASTER_URL,
+  env.KUBERNETES_NAMESPACE,
+  env.KUBERNETES_USERNAME,
+  env.KUBERNETES_PASSWORD,
+  onDeploymentChange
+);

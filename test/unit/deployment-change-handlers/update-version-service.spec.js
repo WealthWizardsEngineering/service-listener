@@ -1,9 +1,7 @@
 const test = require('tape');
-const sinon = require('sinon');
 const proxyquire = require('proxyquire').noCallThru();
 
 test('update-version-service', t => {
-
   t.test('that when a deployment changes then the service details are retrieved, the current version is retrieved and stored in the version service', assert => {
     assert.plan(5);
 
@@ -12,54 +10,54 @@ test('update-version-service', t => {
         metadata: {
           name: 'fakeServiceName',
           namespace: 'fakeNamespace',
-        }
-      }
-    }
+        },
+      },
+    };
 
-    const fakeEnvironments =  [
+    const fakeEnvironments = [
       {
         _id: 'fakeNamespace',
-        baseUrl: 'http://bob2'
-      }
-    ]
+        baseUrl: 'http://bob2',
+      },
+    ];
 
     const fakeLinks = [
       {
         _id: 'ping',
-        url: '/fakePing'
+        url: '/fakePing',
       },
-    ]
+    ];
 
     const fakeService = {
       _id: 'fakeServiceName',
       __v: 0,
-      createdAt: "2017-03-06T14:17:21.850Z",
-      updatedAt: "2017-03-06T14:17:21.850Z",
+      createdAt: '2017-03-06T14:17:21.850Z',
+      updatedAt: '2017-03-06T14:17:21.850Z',
       links: fakeLinks,
-      environments: fakeEnvironments
-    }
+      environments: fakeEnvironments,
+    };
 
-    const {updateVersionService} = proxyquire('../../../src/deployment-change-handlers/update-version-service', {
+    const { updateVersionService } = proxyquire('../../../src/deployment-change-handlers/update-version-service', {
       '../registry-client/get-service': {
-        getService: (serviceName) => {
+        getService: serviceName => {
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.resolve(fakeService);
         },
       },
       '../ping-client/get-ping': {
-        getPing: (url) => {
-          assert.equal(url, 'http://bob2/fakePing', 'expected the ping url generated from service')
-          return Promise.resolve({ version: "0.0.97", name: "fakeServiceName"});
+        getPing: url => {
+          assert.equal(url, 'http://bob2/fakePing', 'expected the ping url generated from service');
+          return Promise.resolve({ version: '0.0.97', name: 'fakeServiceName' });
         },
       },
       '../version-service-client/store-version': {
         storeVersion: (environment, serviceName, version) => {
-          assert.equal(environment, 'fakeNamespace', 'expected the environment')
-          assert.equal(serviceName, 'fakeServiceName', 'expected the serviceName')
-          assert.equal(version, '0.0.97', 'expected the version retrieved from get ping')
+          assert.equal(environment, 'fakeNamespace', 'expected the environment');
+          assert.equal(serviceName, 'fakeServiceName', 'expected the serviceName');
+          assert.equal(version, '0.0.97', 'expected the version retrieved from get ping');
           return Promise.resolve();
         },
-      }
+      },
     });
 
     updateVersionService(fakeDeployment);
@@ -73,61 +71,61 @@ test('update-version-service', t => {
         metadata: {
           name: 'fakeServiceName',
           namespace: 'fakeNamespace',
-        }
-      }
-    }
+        },
+      },
+    };
 
-    const fakeEnvironments =  [
+    const fakeEnvironments = [
       {
         _id: 'env1',
-        baseUrl: 'http://bob1'
+        baseUrl: 'http://bob1',
       }, {
         _id: 'fakeNamespace',
-        baseUrl: 'http://bob2'
-      }
-    ]
+        baseUrl: 'http://bob2',
+      },
+    ];
 
     const fakeLinks = [
       {
         _id: 'fakeLink1',
-        url: '/fakeUrl1'
+        url: '/fakeUrl1',
       },
       {
         _id: 'ping',
-        url: '/fakePing'
+        url: '/fakePing',
       },
-    ]
+    ];
 
     const fakeService = {
       _id: 'fakeServiceName',
       __v: 0,
-      createdAt: "2017-03-06T14:17:21.850Z",
-      updatedAt: "2017-03-06T14:17:21.850Z",
+      createdAt: '2017-03-06T14:17:21.850Z',
+      updatedAt: '2017-03-06T14:17:21.850Z',
       links: fakeLinks,
-      environments: fakeEnvironments
-    }
+      environments: fakeEnvironments,
+    };
 
-    const {updateVersionService} = proxyquire('../../../src/deployment-change-handlers/update-version-service', {
+    const { updateVersionService } = proxyquire('../../../src/deployment-change-handlers/update-version-service', {
       '../registry-client/get-service': {
-        getService: (serviceName) => {
+        getService: serviceName => {
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.resolve(fakeService);
         },
       },
       '../ping-client/get-ping': {
-        getPing: (url) => {
-          assert.equal(url, 'http://bob2/fakePing', 'expected the ping url generated from service')
-          return Promise.resolve({ version: "0.0.97", name: "fakeServiceName"});
+        getPing: url => {
+          assert.equal(url, 'http://bob2/fakePing', 'expected the ping url generated from service');
+          return Promise.resolve({ version: '0.0.97', name: 'fakeServiceName' });
         },
       },
       '../version-service-client/store-version': {
         storeVersion: (environment, serviceName, version) => {
-          assert.equal(environment, 'fakeNamespace', 'expected the environment')
-          assert.equal(serviceName, 'fakeServiceName', 'expected the serviceName')
-          assert.equal(version, '0.0.97', 'expected the version retrieved from get ping')
+          assert.equal(environment, 'fakeNamespace', 'expected the environment');
+          assert.equal(serviceName, 'fakeServiceName', 'expected the serviceName');
+          assert.equal(version, '0.0.97', 'expected the version retrieved from get ping');
           return Promise.resolve();
         },
-      }
+      },
     });
 
     updateVersionService(fakeDeployment);
@@ -141,62 +139,58 @@ test('update-version-service', t => {
         metadata: {
           name: 'fakeServiceName',
           namespace: 'fakeNamespace',
-        }
-      }
-    }
+        },
+      },
+    };
 
-    const fakeEnvironments =  [
+    const fakeEnvironments = [
       {
         _id: 'env1',
-        baseUrl: 'http://bob1'
+        baseUrl: 'http://bob1',
       }, {
-        _id: 'fakeNamespace'
-      }
-    ]
+        _id: 'fakeNamespace',
+      },
+    ];
 
     const fakeLinks = [
       {
         _id: 'fakeLink1',
-        url: '/fakeUrl1'
+        url: '/fakeUrl1',
       },
       {
         _id: 'ping',
-        url: '/fakePing'
+        url: '/fakePing',
       },
-    ]
+    ];
 
     const fakeService = {
       _id: 'fakeServiceName',
       __v: 0,
-      createdAt: "2017-03-06T14:17:21.850Z",
-      updatedAt: "2017-03-06T14:17:21.850Z",
+      createdAt: '2017-03-06T14:17:21.850Z',
+      updatedAt: '2017-03-06T14:17:21.850Z',
       links: fakeLinks,
-      environments: fakeEnvironments
-    }
+      environments: fakeEnvironments,
+    };
 
-    const sandbox = sinon.sandbox.create();
-    const getPingStub = sandbox.stub().resolves();
-    const storeVersionStub = sandbox.stub().resolves();
-
-    const {updateVersionService} = proxyquire('../../../src/deployment-change-handlers/update-version-service', {
+    const { updateVersionService } = proxyquire('../../../src/deployment-change-handlers/update-version-service', {
       '../registry-client/get-service': {
-        getService: (serviceName) => {
+        getService: serviceName => {
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.resolve(fakeService);
         },
       },
       '../ping-client/get-ping': {
-        getPing: (url) => {
-          assert.fail('should not call get-ping')
-          return Promise.resolve({ version: "0.0.97", name: "fakeServiceName"});
+        getPing: () => {
+          assert.fail('should not call get-ping');
+          return Promise.resolve({ version: '0.0.97', name: 'fakeServiceName' });
         },
       },
       '../version-service-client/store-version': {
-        storeVersion: (environment, serviceName, version) => {
-          assert.fail('should not call store-version')
+        storeVersion: () => {
+          assert.fail('should not call store-version');
           return Promise.resolve();
         },
-      }
+      },
     });
 
     updateVersionService(fakeDeployment);
@@ -210,55 +204,55 @@ test('update-version-service', t => {
         metadata: {
           name: 'fakeServiceName',
           namespace: 'fakeNamespace',
-        }
-      }
-    }
+        },
+      },
+    };
 
-    const fakeEnvironments =  [
+    const fakeEnvironments = [
       {
         _id: 'env1',
-        baseUrl: 'http://bob1'
+        baseUrl: 'http://bob1',
       }, {
         _id: 'fakeNamespace',
-        baseUrl: 'http://bob2'
-      }
-    ]
+        baseUrl: 'http://bob2',
+      },
+    ];
 
     const fakeLinks = [
       {
         _id: 'fakeLink1',
-        url: '/fakeUrl1'
+        url: '/fakeUrl1',
       },
-    ]
+    ];
 
     const fakeService = {
       _id: 'fakeServiceName',
       __v: 0,
-      createdAt: "2017-03-06T14:17:21.850Z",
-      updatedAt: "2017-03-06T14:17:21.850Z",
+      createdAt: '2017-03-06T14:17:21.850Z',
+      updatedAt: '2017-03-06T14:17:21.850Z',
       links: fakeLinks,
-      environments: fakeEnvironments
-    }
+      environments: fakeEnvironments,
+    };
 
-    const {updateVersionService} = proxyquire('../../../src/deployment-change-handlers/update-version-service', {
+    const { updateVersionService } = proxyquire('../../../src/deployment-change-handlers/update-version-service', {
       '../registry-client/get-service': {
-        getService: (serviceName) => {
+        getService: serviceName => {
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.resolve(fakeService);
         },
       },
       '../ping-client/get-ping': {
-        getPing: (url) => {
-          assert.fail('should not call get-ping')
-          return Promise.resolve({ version: "0.0.97", name: "fakeServiceName"});
+        getPing: () => {
+          assert.fail('should not call get-ping');
+          return Promise.resolve({ version: '0.0.97', name: 'fakeServiceName' });
         },
       },
       '../version-service-client/store-version': {
-        storeVersion: (environment, serviceName, version) => {
-          assert.fail('should not call store-version')
+        storeVersion: () => {
+          assert.fail('should not call store-version');
           return Promise.resolve();
         },
-      }
+      },
     });
 
     updateVersionService(fakeDeployment);
