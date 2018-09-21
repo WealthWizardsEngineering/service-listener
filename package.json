@@ -36,7 +36,7 @@
     "co": "4.6.0",
     "envalid": "4.1.4",
     "json-stream": "^1.0.0",
-    "kubernetes-client": "^3.8.0",
+    "kubernetes-client": "^6.1.0",
     "request": "^2.82.0",
     "request-promise-native": "1.0.5"
   }

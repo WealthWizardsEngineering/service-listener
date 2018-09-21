@@ -15,15 +15,17 @@ test('update-service-registry', t => {
     };
 
     const fakeIngress = {
-      spec: {
-        rules: [{
-          host: 'fakeHost',
-          http: {
-            paths: [{
-              path: '/fakePath',
-            }],
-          },
-        }],
+      body: {
+        spec: {
+          rules: [{
+            host: 'fakeHost',
+            http: {
+              paths: [{
+                path: '/fakePath',
+              }],
+            },
+          }],
+        },
       },
     };
 
@@ -86,15 +88,17 @@ test('update-service-registry', t => {
     };
 
     const fakeIngress = {
-      spec: {
-        rules: [{
-          host: 'fakeHost',
-          http: {
-            paths: [{
-              path: '/',
-            }],
-          },
-        }],
+      body: {
+        spec: {
+          rules: [{
+            host: 'fakeHost',
+            http: {
+              paths: [{
+                path: '/',
+              }],
+            },
+          }],
+        },
       },
     };
 
@@ -266,15 +270,17 @@ test('update-service-registry', t => {
     };
 
     const fakeIngress = {
-      spec: {
-        rules: [{
-          host: 'fakeHost',
-          http: {
-            paths: [{
-              path: '/fakePath',
-            }],
-          },
-        }],
+      body: {
+        spec: {
+          rules: [{
+            host: 'fakeHost',
+            http: {
+              paths: [{
+                path: '/fakePath',
+              }],
+            },
+          }],
+        },
       },
     };
 

@@ -11,7 +11,7 @@ function retrieveBaseUrlFor(environmentName, service) {
       if (environment._id === environmentName) {
         if (environment.baseUrl != null) {
           baseUrl = environment.baseUrl;
-          logger.info(`Retrieved base url [${environmentName}/${service}]: ${baseUrl}`);
+          logger.debug(`Retrieved base url [${environmentName}/${service}]: ${baseUrl}`);
         }
       }
     });
@@ -26,7 +26,7 @@ function retrievePingUrlFor(service) {
       if (link._id === 'ping') {
         if (link.url != null) {
           url = link.url;
-          logger.info(`Retrieved ping url [${service}]: ${url}`);
+          logger.debug(`Retrieved ping url [${service}]: ${url}`);
         }
       }
     });
@@ -37,7 +37,7 @@ function retrievePingUrlFor(service) {
 const updateVersionService = (deploymentObject => {
   const environment = deploymentObject.object.metadata.namespace;
   const serviceName = deploymentObject.object.metadata.name;
-  logger.info(`Query version for ${environment}/${serviceName}`);
+  logger.debug(`Query version for ${environment}/${serviceName}`);
 
   const servicePromise = getService(serviceName);
   servicePromise.then(service => {
@@ -68,6 +68,8 @@ const updateVersionService = (deploymentObject => {
           logger.warn(`Error pinging service [${fullPingUrl}]: ${error}`);
         });
     }
+  }).catch(error => {
+    logger.warn(`Error getting service [${environment}/${serviceName}]: ${error}`);
   });
 });
 

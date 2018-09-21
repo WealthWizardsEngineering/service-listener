@@ -64,7 +64,7 @@ function createService(namespace, serviceName, links, tags, baseUrl = null) {
 
   storeService(serviceName, environment, links, tags)
     .then(() => {
-      logger.debug(`Service ${environment}/${serviceName} stored OK`);
+      logger.debug(`Service ${environment._id}/${serviceName} stored OK`);
     })
     .catch(error => {
       logger.warn(`Service ${serviceName} failed to be stored: ${error}`);
@@ -83,20 +83,19 @@ const updateServiceRegistry = (deploymentObject => {
     env.KUBERNETES_USERNAME,
     env.KUBERNETES_PASSWORD,
     serviceName
-  )
-    .then(response => {
-      let baseUrl = `https://${response.spec.rules[0].host}`;
-      if (response.spec.rules[0].http.paths[0].path !== '/') {
-        baseUrl += response.spec.rules[0].http.paths[0].path;
-      }
-      logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
-      addDefaultLinks(links);
-      createService(namespace, serviceName, links, tags, baseUrl);
-    })
-    .catch(error => {
-      logger.info(`Unable to retrieve base URL for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
-      createService(namespace, serviceName, links, tags);
-    });
+  ).then(response => {
+    logger.trace(`Retrieved ingress: ${JSON.stringify(response, null, 2)}`);
+    let baseUrl = `https://${response.body.spec.rules[0].host}`;
+    if (response.body.spec.rules[0].http.paths[0].path !== '/') {
+      baseUrl += response.body.spec.rules[0].http.paths[0].path;
+    }
+    logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
+    addDefaultLinks(links);
+    createService(namespace, serviceName, links, tags, baseUrl);
+  }).catch(error => {
+    logger.info(`Unable to retrieve ingress definition for ${serviceName}, perhaps this service does not have an ingress controller: ${error}`);
+    createService(namespace, serviceName, links, tags);
+  });
 });
 
 module.exports = {
