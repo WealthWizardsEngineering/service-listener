@@ -25,4 +25,3 @@ const listenForDeployments = ((masterUrl, namespace, username, password, onChang
 module.exports = {
   listenForDeployments,
 };
-

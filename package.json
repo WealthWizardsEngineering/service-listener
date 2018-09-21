@@ -21,15 +21,15 @@
   "author": "Wealth Wizards",
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "8.2.3",
-    "eslint": "4.19.1",
-    "eslint-config-airbnb-base": "12.1.0",
-    "eslint-plugin-import": "2.11.0",
+    "babel-eslint": "9.0.0",
+    "eslint": "5.6.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.14.0",
     "nsp": "3.2.1",
-    "nyc": "11.8.0",
-    "proxyquire": "2.0.1",
-    "sinon": "5.0.7",
-    "tape": "4.9.0"
+    "nyc": "13.0.1",
+    "proxyquire": "2.1.0",
+    "sinon": "6.3.4",
+    "tape": "4.9.1"
   },
   "dependencies": {
     "bunyan": "1.8.12",

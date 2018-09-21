@@ -26,4 +26,3 @@ const getIngress = ((masterUrl, namespace, username, password, ingressName) => {
 module.exports = {
   getIngress,
 };
-
