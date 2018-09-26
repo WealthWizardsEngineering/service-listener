@@ -5,7 +5,7 @@ const proxyquire = require('proxyquire').noCallThru();
 test('store service', t => {
   t.test('that when the service does not exist then the document is posted to the service', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';
@@ -55,7 +55,7 @@ test('store service', t => {
 
   t.test('that when the service already exists then the document is put to the service with the new changes', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';
@@ -117,7 +117,7 @@ test('store service', t => {
 
   t.test('that when the service and environment already exists then the document is put to the service with the new changes', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';
@@ -185,7 +185,7 @@ test('store service', t => {
 
   t.test('that when the service exists with an environment and a different environment is added then all environments should be posted', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';
@@ -253,7 +253,7 @@ test('store service', t => {
 
   t.test('that when the service exists without an environment and an environment is added then the new environments should be posted', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';
@@ -312,7 +312,7 @@ test('store service', t => {
 
   t.test('that when the service does not exist then the document is posted to the service with links', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';
@@ -373,7 +373,7 @@ test('store service', t => {
 
   t.test('that when the service already exists without links then the document is put to the service with the new changes including links', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';
@@ -446,7 +446,7 @@ test('store service', t => {
 
   t.test('that when the service already exists with links then the document is put to the service with the new changes replacing all links', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';
@@ -530,7 +530,7 @@ test('store service', t => {
 
   t.test('that when the service already exists with tags then the document is put to the service with the new changes replacing all tags', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeServiceName = 'my-service-name';

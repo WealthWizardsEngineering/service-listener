@@ -28,7 +28,12 @@ async function main() {
       version: '1.10',
     });
 
-    listenForDeployments(client, env.KUBERNETES_NAMESPACE, onDeploymentChange);
+    const namespaces = await client.api.v1.namespaces.get();
+    namespaces.body.items.forEach(namespace => {
+      if (env.KUBERNETES_NAMESPACES.split(',').includes(namespace.metadata.name)) {
+        listenForDeployments(client, namespace.metadata.name, onDeploymentChange);
+      }
+    });
   } catch (err) {
     logger.error(`Error: ${err}`);
   }

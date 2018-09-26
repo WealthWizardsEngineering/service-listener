@@ -5,7 +5,7 @@ const proxyquire = require('proxyquire').noCallThru();
 test('store version', t => {
   t.test('that when the version does not exist it is stored', assert => {
     assert.plan(4);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeEnvironment = 'my-environment';
@@ -50,7 +50,7 @@ test('store version', t => {
 
   t.test('that when the latest version is the same then it is not stored', assert => {
     assert.plan(3);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeEnvironment = 'my-environment';
@@ -90,7 +90,7 @@ test('store version', t => {
 
   t.test('that when the latest version is different it is stored', assert => {
     assert.plan(4);
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves();
 
     const fakeEnvironment = 'my-environment';

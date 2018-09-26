@@ -4,7 +4,7 @@ const proxyquire = require('proxyquire').noCallThru();
 
 test('that the correct params are sent to the get service api call', t => {
   t.plan(2);
-  const sandbox = sinon.sandbox.create();
+  const sandbox = sinon.createSandbox();
   const requestStub = sandbox.stub().resolves();
 
   const { getService } = proxyquire('../../../src/registry-client/get-service', {

@@ -79,7 +79,7 @@ const updateServiceRegistry = (deploymentObject => {
 
   getIngress(
     env.KUBERNETES_MASTER_URL,
-    env.KUBERNETES_NAMESPACE,
+    namespace,
     env.KUBERNETES_USERNAME,
     env.KUBERNETES_PASSWORD,
     serviceName

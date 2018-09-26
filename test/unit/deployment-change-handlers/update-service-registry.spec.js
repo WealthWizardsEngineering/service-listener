@@ -49,7 +49,7 @@ test('update-service-registry', t => {
       '../kubernetes-client/get-ingress': {
         getIngress: (masterUrl, namespace, username, password, serviceName) => {
           assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
-          assert.equal(namespace, 'test-namespace', 'expected namespace to be passed through');
+          assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
           assert.equal(username, 'test-username', 'expected username to be passed through');
           assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
@@ -66,7 +66,6 @@ test('update-service-registry', t => {
       },
       '../env-vars': {
         KUBERNETES_MASTER_URL: 'test-masterUrl',
-        KUBERNETES_NAMESPACE: 'test-namespace',
         KUBERNETES_USERNAME: 'test-username',
         KUBERNETES_PASSWORD: 'test-password',
       },
@@ -111,7 +110,7 @@ test('update-service-registry', t => {
       '../kubernetes-client/get-ingress': {
         getIngress: (masterUrl, namespace, username, password, serviceName) => {
           assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
-          assert.equal(namespace, 'test-namespace', 'expected namespace to be passed through');
+          assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
           assert.equal(username, 'test-username', 'expected username to be passed through');
           assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
@@ -127,7 +126,6 @@ test('update-service-registry', t => {
       },
       '../env-vars': {
         KUBERNETES_MASTER_URL: 'test-masterUrl',
-        KUBERNETES_NAMESPACE: 'test-namespace',
         KUBERNETES_USERNAME: 'test-username',
         KUBERNETES_PASSWORD: 'test-password',
       },
@@ -156,7 +154,7 @@ test('update-service-registry', t => {
       '../kubernetes-client/get-ingress': {
         getIngress: (masterUrl, namespace, username, password, serviceName) => {
           assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
-          assert.equal(namespace, 'test-namespace', 'expected namespace to be passed through');
+          assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
           assert.equal(username, 'test-username', 'expected username to be passed through');
           assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
@@ -173,7 +171,6 @@ test('update-service-registry', t => {
       },
       '../env-vars': {
         KUBERNETES_MASTER_URL: 'test-masterUrl',
-        KUBERNETES_NAMESPACE: 'test-namespace',
         KUBERNETES_USERNAME: 'test-username',
         KUBERNETES_PASSWORD: 'test-password',
       },
@@ -224,7 +221,7 @@ test('update-service-registry', t => {
       '../kubernetes-client/get-ingress': {
         getIngress: (masterUrl, namespace, username, password, serviceName) => {
           assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
-          assert.equal(namespace, 'test-namespace', 'expected namespace to be passed through');
+          assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
           assert.equal(username, 'test-username', 'expected username to be passed through');
           assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
@@ -241,7 +238,6 @@ test('update-service-registry', t => {
       },
       '../env-vars': {
         KUBERNETES_MASTER_URL: 'test-masterUrl',
-        KUBERNETES_NAMESPACE: 'test-namespace',
         KUBERNETES_USERNAME: 'test-username',
         KUBERNETES_PASSWORD: 'test-password',
       },
@@ -300,7 +296,7 @@ test('update-service-registry', t => {
       '../kubernetes-client/get-ingress': {
         getIngress: (masterUrl, namespace, username, password, serviceName) => {
           assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
-          assert.equal(namespace, 'test-namespace', 'expected namespace to be passed through');
+          assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
           assert.equal(username, 'test-username', 'expected username to be passed through');
           assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
@@ -317,7 +313,6 @@ test('update-service-registry', t => {
       },
       '../env-vars': {
         KUBERNETES_MASTER_URL: 'test-masterUrl',
-        KUBERNETES_NAMESPACE: 'test-namespace',
         KUBERNETES_USERNAME: 'test-username',
         KUBERNETES_PASSWORD: 'test-password',
       },
@@ -347,7 +342,7 @@ test('update-service-registry', t => {
       '../kubernetes-client/get-ingress': {
         getIngress: (masterUrl, namespace, username, password, serviceName) => {
           assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
-          assert.equal(namespace, 'test-namespace', 'expected namespace to be passed through');
+          assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
           assert.equal(username, 'test-username', 'expected username to be passed through');
           assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
@@ -363,7 +358,6 @@ test('update-service-registry', t => {
       },
       '../env-vars': {
         KUBERNETES_MASTER_URL: 'test-masterUrl',
-        KUBERNETES_NAMESPACE: 'test-namespace',
         KUBERNETES_USERNAME: 'test-username',
         KUBERNETES_PASSWORD: 'test-password',
       },

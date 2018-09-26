@@ -37,12 +37,12 @@ This user has been granted readonly access to all APIs, this may be locked down 
 * SERVICE_REGISTRY_URL - the URL for the [service registry](https://github.com/WealthWizardsEngineering/service-registry)
 * VERSION_SERVICE_URL - the URL for the [version service](https://github.com/WealthWizardsEngineering/version-service)
 * KUBERNETES_MASTER_URL - the URL the Kubernetes API
-* KUBERNETES_NAMESPACE - the Kubernetes namespace to interrogate
+* KUBERNETES_NAMESPACES - the Kubernetes namespace(s) to interrogate as a comma separated list
 * KUBERNETES_USERNAME - the Kubernetes username with permissions to interrogate the API
 * KUBERNETES_PASSWORD - the Kubernetes password
 
 ## Running
 
 ```
-docker run -e SERVICE_REGISTRY_URL=https://service-registry -e VERSION_SERVICE_URL=https://version-service -e KUBERNETES_MASTER_URL=https://kubernetes-api -e KUBERNETES_NAMESPACE=default -e KUBERNETES_USERNAME=my-user -e KUBERNETES_PASSWORD=my-password quay.io/wealthwizards/service-listener
+docker run -e SERVICE_REGISTRY_URL=https://service-registry -e VERSION_SERVICE_URL=https://version-service -e KUBERNETES_MASTER_URL=https://kubernetes-api -e KUBERNETES_NAMESPACES=default,custom -e KUBERNETES_USERNAME=my-user -e KUBERNETES_PASSWORD=my-password quay.io/wealthwizards/service-listener
 ```

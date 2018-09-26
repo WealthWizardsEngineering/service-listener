@@ -29,7 +29,7 @@ test('get-latest-version', t => {
       },
     ];
 
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves(fakeVersionList);
 
     const { getLatestVersion } = proxyquire('../../../src/version-service-client/get-latest-version', {
@@ -60,7 +60,7 @@ test('get-latest-version', t => {
 
     const fakeVersionList = [];
 
-    const sandbox = sinon.sandbox.create();
+    const sandbox = sinon.createSandbox();
     const requestStub = sandbox.stub().resolves(fakeVersionList);
 
     const { getLatestVersion } = proxyquire('../../../src/version-service-client/get-latest-version', {

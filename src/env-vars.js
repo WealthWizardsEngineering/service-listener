@@ -6,7 +6,7 @@ const { str } = envalid;
 const env = envalid.cleanEnv(process.env, {
   SERVICE_REGISTRY_URL: str(),
   KUBERNETES_MASTER_URL: str(),
-  KUBERNETES_NAMESPACE: str(),
+  KUBERNETES_NAMESPACES: str(),
   KUBERNETES_USERNAME: str(),
   KUBERNETES_PASSWORD: str(),
   VERSION_SERVICE_URL: str(),

@@ -4,7 +4,7 @@ const proxyquire = require('proxyquire').noCallThru();
 
 test('that the ping endpoint can be queried', t => {
   t.plan(2);
-  const sandbox = sinon.sandbox.create();
+  const sandbox = sinon.createSandbox();
   const requestStub = sandbox.stub().resolves();
 
   const { getPing } = proxyquire('../../../src/ping-client/get-ping', {

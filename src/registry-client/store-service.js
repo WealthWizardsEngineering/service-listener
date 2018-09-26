@@ -61,7 +61,7 @@ const storeService = (serviceName, environment, links = null, tags = null) => co
     body: updatedService,
   });
 }).catch(error => {
-  logger.warn(`Failed to store service [${environment}/${serviceName}]: ${error}`);
+  logger.warn(`Failed to store service [${environment._id}/${serviceName}]: ${error}`);
 });
 
 module.exports = {
