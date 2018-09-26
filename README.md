@@ -4,7 +4,8 @@ The service listener is responsible for monitoring Kubernetes via the API and pe
 
 ## Change Handlers
 
-The service listener can perform multiple actions when a change notification is received from Kubernetes.
+The service listener can perform multiple actions when a change notification is received from Kubernetes. These are
+the change handlers, and are documented below:
 
 ### Update Service Registry
 
