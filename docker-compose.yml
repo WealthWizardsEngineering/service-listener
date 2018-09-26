@@ -1,7 +1,7 @@
 version: '2'
 services:
   node:
-    image: quay.io/wealthwizards/ww-base-node:alpine-6
+    image: quay.io/wealthwizards/ww-base-node:alpine-8
     volumes:
       - .:/usr/src/app:z
     working_dir: /usr/src/app
@@ -20,9 +20,4 @@ services:
     extends:
       service: node
     entrypoint: /usr/src/app/src/service-listener.js
-    environment:
-    - WW_REQUEST_LOGGER_LEVEL=trace
-    - SERVICE_REGISTRY_URL=http://1.2.3.5:3000/service-registry
-    - VERSION_SERVICE_URL=http://1.2.3.5:3001/version-service
-    - KUBERNETES_MASTER_URL=https://1.2.3.4
-    - KUBERNETES_NAMESPACE=st
+    env_file: .env

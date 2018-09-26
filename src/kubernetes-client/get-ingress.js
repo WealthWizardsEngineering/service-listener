@@ -1,30 +1,20 @@
-const { Extensions } = require('kubernetes-client');
+const Client = require('kubernetes-client').Client;
 
-const getIngress = ((masterUrl, namespace, username, password, ingressName) =>
-{
-  const ext = new Extensions({
-    url: masterUrl,
-    version: 'v1beta1',
-    namespace: namespace,
-    insecureSkipTlsVerify: true,
-    auth: {
-      user: username,
-      pass: password
-    }
+async function getIngress(masterUrl, namespace, username, password, ingressName) {
+  const client = new Client({
+    config: {
+      url: masterUrl,
+      insecureSkipTlsVerify: true,
+      auth: {
+        user: username,
+        pass: password,
+      },
+    },
+    version: '1.10',
   });
-
-  return new Promise(function(resolve, reject) {
-    ext.ns.ingress(ingressName).get((err, result) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(result);
-      }
-    });
-  });
-});
+  return client.apis.extensions.v1beta1.namespaces(namespace).ingresses(ingressName).get();
+}
 
 module.exports = {
   getIngress,
 };
-
