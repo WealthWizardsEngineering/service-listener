@@ -73,7 +73,7 @@ function createService(namespace, serviceName, links, tags, baseUrl = null) {
 
 const updateServiceRegistry = (deploymentObject => {
   const { namespace } = deploymentObject.object.metadata;
-  const serviceName = deploymentObject.object.metadata.name;
+  const serviceName = deploymentObject.object.metadata.labels.app;
   const links = extractLinksFrom(deploymentObject.object.metadata.annotations);
   const tags = extractTagsFrom(deploymentObject.object.metadata.annotations);
 

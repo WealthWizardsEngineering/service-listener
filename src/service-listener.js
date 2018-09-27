@@ -5,11 +5,13 @@ const env = require('./env-vars');
 const logger = require('./logger');
 
 const { listenForDeployments } = require('./kubernetes-client/deployment-listener');
+const { updateConsul } = require('./deployment-change-handlers/update-consul');
 const { updateServiceRegistry } = require('./deployment-change-handlers/update-service-registry');
 const { updateVersionService } = require('./deployment-change-handlers/update-version-service');
 
 function onDeploymentChange(deploymentObject) {
   logger.trace('Received deployment object: ', JSON.stringify(deploymentObject, null, 2));
+  updateConsul(deploymentObject);
   updateServiceRegistry(deploymentObject);
   updateVersionService(deploymentObject);
 }

@@ -16,7 +16,7 @@ function listenForDeployments(client, namespace, onDeploymentChange) {
     listenForDeployments(client, namespace, onDeploymentChange);
   });
   jsonStream.on('data', object => {
-    logger.debug(`Event received: ${object.type} - ${object.object.metadata.namespace}/${object.object.metadata.name}`);
+    logger.debug(`Event received: ${object.type} - ${object.object.metadata.namespace}/${object.object.metadata.labels.app}`);
     onDeploymentChange(object);
   });
 }

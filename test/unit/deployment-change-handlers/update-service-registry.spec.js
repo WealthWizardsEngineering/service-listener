@@ -8,7 +8,9 @@ test('update-service-registry', t => {
     const fakeDeployment = {
       object: {
         metadata: {
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
@@ -80,7 +82,9 @@ test('update-service-registry', t => {
     const fakeDeployment = {
       object: {
         metadata: {
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
@@ -140,7 +144,9 @@ test('update-service-registry', t => {
     const fakeDeployment = {
       object: {
         metadata: {
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
@@ -192,7 +198,9 @@ test('update-service-registry', t => {
             'link-to-something-else': 'fake-link',
             anotherone: 'to ignore',
           },
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
@@ -259,7 +267,9 @@ test('update-service-registry', t => {
             'link-to-something-else': 'fake-link',
             anotherone: 'to ignore',
           },
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
@@ -330,7 +340,9 @@ test('update-service-registry', t => {
           annotations: {
             tags: 'tag1,tag2,tag3',
           },
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
