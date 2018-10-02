@@ -8,7 +8,9 @@ test('update-version-service', t => {
     const fakeDeployment = {
       object: {
         metadata: {
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
@@ -69,7 +71,9 @@ test('update-version-service', t => {
     const fakeDeployment = {
       object: {
         metadata: {
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
@@ -137,7 +141,9 @@ test('update-version-service', t => {
     const fakeDeployment = {
       object: {
         metadata: {
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },
@@ -202,7 +208,9 @@ test('update-version-service', t => {
     const fakeDeployment = {
       object: {
         metadata: {
-          name: 'fakeServiceName',
+          labels: {
+            app: 'fakeServiceName',
+          },
           namespace: 'fakeNamespace',
         },
       },

@@ -1,7 +1,7 @@
 const envalid = require('envalid');
 const logger = require('./logger');
 
-const { str } = envalid;
+const { str, num, bool } = envalid;
 
 const env = envalid.cleanEnv(process.env, {
   SERVICE_REGISTRY_URL: str(),
@@ -10,6 +10,10 @@ const env = envalid.cleanEnv(process.env, {
   KUBERNETES_USERNAME: str(),
   KUBERNETES_PASSWORD: str(),
   VERSION_SERVICE_URL: str(),
+  CONSUL_TOKEN: str({ default: undefined }),
+  CONSUL_ADDR: str({ default: undefined }),
+  CONSUL_PORT: num({ default: 443 }),
+  CONSUL_SECURE: bool({ default: true }),
 });
 
 logger.info('Required environment variables are present');

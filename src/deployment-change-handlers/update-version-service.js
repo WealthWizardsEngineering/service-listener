@@ -36,7 +36,7 @@ function retrievePingUrlFor(service) {
 
 const updateVersionService = (deploymentObject => {
   const environment = deploymentObject.object.metadata.namespace;
-  const serviceName = deploymentObject.object.metadata.name;
+  const serviceName = deploymentObject.object.metadata.labels.app;
   logger.debug(`Query version for ${environment}/${serviceName}`);
 
   const servicePromise = getService(serviceName);
