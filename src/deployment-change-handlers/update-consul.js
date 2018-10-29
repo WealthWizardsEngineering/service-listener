@@ -13,15 +13,24 @@ const client = consul({
 
 const updateConsul = (deploymentObject => {
   if (typeof env.CONSUL_ADDR !== 'undefined' && env.CONSUL_ADDR) {
+    const updateType = deploymentObject.type;
     const { namespace } = deploymentObject.object.metadata;
     const serviceName = deploymentObject.object.metadata.labels.app;
     const variant = deploymentObject.object.spec.template.metadata.labels.version;
     if (typeof variant !== 'undefined' && variant) {
-      logger.debug(`Storing deployment in consul: ${namespace} ${serviceName} ${variant}`);
-      client.kv.set(`deployment_registry/${namespace}/${serviceName}/${variant}`, '', err => {
-        if (err) throw err;
-        logger.debug('Stored successfully');
-      });
+      if (updateType === 'ADDED') {
+        logger.debug(`Storing deployment in consul: ${namespace} ${serviceName} ${variant}`);
+        client.kv.set(`deployment_registry/${namespace}/${serviceName}/${variant}`, '', err => {
+          if (err) throw err;
+          logger.debug('Stored successfully');
+        });
+      } else if (updateType === 'DELETED') {
+        logger.debug(`Deleting deployment in consul: ${namespace} ${serviceName} ${variant}`);
+        client.kv.del(`deployment_registry/${namespace}/${serviceName}/${variant}`, err => {
+          if (err) throw err;
+          logger.debug('Deleted successfully');
+        });
+      }
     }
   }
 });
