@@ -86,7 +86,7 @@ const updateServiceRegistry = (deploymentObject => {
   ).then(response => {
     logger.trace(`Retrieved ingress: ${JSON.stringify(response, null, 2)}`);
     let baseUrl = `https://${response.body.spec.rules[0].host}`;
-    if (response.body.spec.rules[0].http.paths[0].path !== '/') {
+    if (typeof response.body.spec.rules[0].http.paths[0].path !== 'undefined' && response.body.spec.rules[0].http.paths[0].path && response.body.spec.rules[0].http.paths[0].path !== '/') {
       baseUrl += response.body.spec.rules[0].http.paths[0].path;
     }
     logger.debug(`Base URL for ${serviceName}: ${baseUrl}`);
