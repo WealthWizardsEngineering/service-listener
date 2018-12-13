@@ -6,7 +6,7 @@ NODE_ENV ?= development
 DOCKER_COMPOSE ?= docker-compose
 DOCKER_RUN ?= ${DOCKER_COMPOSE} run --rm
 DOCKER_BASE_IMAGE = node
-NPM ?= ${DOCKER_RUN} -e NODE_ENV=${NODE_ENV} ${DOCKER_BASE_IMAGE} npm
+NPM ?= ${DOCKER_RUN} -e NODE_ENV=${NODE_ENV} ${DOCKER_BASE_IMAGE} yarn
 
 all: clean-up install lint unit-test
 
@@ -35,7 +35,6 @@ run:
 .PHONY: run
 
 clean-up:
-	${MAKEFILE_SUDO_COMMAND} ${NPM} prune
 	${MAKEFILE_SUDO_COMMAND} ${DOCKER_RUN} ${DOCKER_BASE_IMAGE} rm -rf .nyc_output node_modules coverage component-test-report.xml unit-test-report.xml
 	${MAKEFILE_SUDO_COMMAND} ${DOCKER_COMPOSE} stop
 	${MAKEFILE_SUDO_COMMAND} ${DOCKER_COMPOSE} rm -fv
