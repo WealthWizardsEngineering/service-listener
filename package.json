@@ -2,7 +2,7 @@
   "name": "service-listener",
   "version": "0.1.8",
   "engines": {
-    "node": "^8"
+    "node": "^10"
   },
   "description": "A script to listen to kubernetes to automatically identify running deployments/services",
   "homepage": "https://github.com/WealthWizardsEngineering/service-listener",
@@ -21,25 +21,25 @@
   "author": "Wealth Wizards",
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "10.0.1",
-    "eslint": "5.14.1",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.16.0",
+    "babel-eslint": "10.0.2",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "13.2.0",
+    "eslint-plugin-import": "2.18.2",
     "lodash.capitalize": "^4.2.1",
-    "nyc": "13.3.0",
-    "proxyquire": "2.1.0",
+    "nyc": "14.1.1",
+    "proxyquire": "2.1.1",
     "ramda": "0.26.1",
-    "sinon": "7.2.4",
-    "synp": "1.3.2",
-    "tape": "4.10.1"
+    "sinon": "7.3.2",
+    "synp": "1.6.0",
+    "tape": "4.11.0"
   },
   "dependencies": {
     "bunyan": "1.8.12",
     "co": "4.6.0",
     "consul": "0.34.1",
-    "envalid": "4.2.2",
+    "envalid": "5.0.0",
     "json-stream": "^1.0.0",
-    "kubernetes-client": "^6.8.3",
+    "kubernetes-client": "^7.0.1",
     "request": "^2.82.0",
     "request-promise-native": "1.0.7"
   }
