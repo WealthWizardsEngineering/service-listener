@@ -36,7 +36,7 @@
   "dependencies": {
     "bunyan": "1.8.12",
     "co": "4.6.0",
-    "consul": "0.34.1",
+    "consul": "0.36.0",
     "envalid": "5.0.0",
     "json-stream": "^1.0.0",
     "kubernetes-client": "^7.0.1",
