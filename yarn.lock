@@ -460,10 +460,10 @@ confusing-browser-globals@^1.0.5:
   resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.7.tgz#5ae852bd541a910e7ffb2dbb864a2d21a36ad29b"
   integrity sha512-cgHI1azax5ATrZ8rJ+ODDML9Fvu67PimB6aNxBrc/QwSaDaM9eTfIEUHx3bBLJJ82ioSb+/5zfsMCCEJax3ByQ==
 
-consul@0.34.1:
-  version "0.34.1"
-  resolved "https://registry.yarnpkg.com/consul/-/consul-0.34.1.tgz#b000638ad99db038fbb98e508c32d758bf598968"
-  integrity sha512-xCLBzPQBgnDgC2LdYnrT/Fc6PglRU6u7EBkpW0ExAx3Am/CdtKcP5o/3jfwOy7PBAwBqnJk3AYdwwGg+arriiQ==
+consul@0.36.0:
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/consul/-/consul-0.36.0.tgz#d1eff5aafe94eec36a05efb15618c8d39ef1e405"
+  integrity sha512-1ISrujwQt9eCUM6Sl/TQEt3uE9Cn3glho2n/B8KD+XuEcoe/9fUWu9mhsKaRFB+DOKv3qtTwEDLfJBR0YOlS6g==
   dependencies:
     papi "^0.29.0"
 
