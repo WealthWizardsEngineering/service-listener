@@ -31,7 +31,7 @@
     "ramda": "0.26.1",
     "sinon": "7.5.0",
     "synp": "1.6.0",
-    "tape": "4.11.0"
+    "tape": "4.13.0"
   },
   "dependencies": {
     "bunyan": "1.8.12",
