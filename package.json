@@ -41,6 +41,6 @@
     "json-stream": "^1.0.0",
     "kubernetes-client": "^7.0.1",
     "request": "^2.82.0",
-    "request-promise-native": "1.0.7"
+    "request-promise-native": "1.0.8"
   }
 }
