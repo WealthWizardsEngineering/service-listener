@@ -12,16 +12,16 @@ jobs:
       - checkout
       - run:
           name: install
-          command: npm install
+          command: yarn
       - run:
           name: lint
-          command: npm run lint
+          command: yarn lint
       - run:
           name: dependency-check
-          command: npm run dependency-check
+          command: yarn dependency-check
       - run:
           name: unit-tests
-          command: npm run test:unit
+          command: yarn test:unit
   buildAndDeploy:
     machine: true
     steps:

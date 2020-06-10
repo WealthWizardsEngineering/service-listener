@@ -13,10 +13,10 @@
   "scripts": {
     "start": "node service-listener.js",
     "test:unit": "tape 'test/unit/**/*.spec.js'",
-    "test:unit:coverage": "nyc --report-dir=coverage/unit --reporter=text --reporter=html --reporter=lcov npm run test:unit",
+    "test:unit:coverage": "nyc --report-dir=coverage/unit --reporter=text --reporter=html --reporter=lcov yarn test:unit",
     "lint": "eslint src test",
     "lint:fix": "eslint --fix src test",
-    "dependency-check": "rm -f package-lock.json && synp --source-file yarn.lock && npm --production audit --registry=https://registry.npmjs.org --json | node ./test/audit"
+    "dependency-check": "yarn audit"
   },
   "author": "Wealth Wizards",
   "license": "MIT",
