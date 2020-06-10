@@ -16,7 +16,9 @@
     "test:unit:coverage": "nyc --report-dir=coverage/unit --reporter=text --reporter=html --reporter=lcov yarn test:unit",
     "lint": "eslint src test",
     "lint:fix": "eslint --fix src test",
-    "dependency-check": "yarn audit"
+    "dependency-check": "yarn audit",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "author": "Wealth Wizards",
   "license": "MIT",
@@ -41,6 +43,8 @@
     "json-stream": "^1.0.0",
     "kubernetes-client": "^9.0.0",
     "request": "^2.88.2",
-    "request-promise-native": "1.0.8"
-  }
+    "request-promise-native": "1.0.8",
+    "snyk": "^1.338.0"
+  },
+  "snyk": true
 }
