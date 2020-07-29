@@ -37,13 +37,53 @@ This user has been granted readonly access to all APIs, this may be locked down 
 
 * SERVICE_REGISTRY_URL - the URL for the [service registry](https://github.com/WealthWizardsEngineering/service-registry)
 * VERSION_SERVICE_URL - the URL for the [version service](https://github.com/WealthWizardsEngineering/version-service)
-* KUBERNETES_MASTER_URL - the URL the Kubernetes API
 * KUBERNETES_NAMESPACES - the Kubernetes namespace(s) to interrogate as a comma separated list
-* KUBERNETES_USERNAME - the Kubernetes username with permissions to interrogate the API
-* KUBERNETES_PASSWORD - the Kubernetes password
 
-## Running
+Access to the kubernetes api is via a cluster role, you will need something like this:
 
 ```
-docker run -e SERVICE_REGISTRY_URL=https://service-registry -e VERSION_SERVICE_URL=https://version-service -e KUBERNETES_MASTER_URL=https://kubernetes-api -e KUBERNETES_NAMESPACES=default,custom -e KUBERNETES_USERNAME=my-user -e KUBERNETES_PASSWORD=my-password quay.io/wealthwizards/service-listener
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: service-listener
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    k8s-app: service-listener
+  name: service-listener
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: service-listener
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: service-listener
+subjects:
+  - kind: ServiceAccount
+    name: service-listener
+---
+kind: Deployment
+apiVersion: apps/v1
+spec:
+  template:
+    spec:
+      serviceAccountName: service-listener
+ ...
+```
+
+## Running locally
+
+By default running will mount your home ~/.kube directory in order to use the default kubernetes config file for talking
+to a cluster.
+
+```
+make run
 ```

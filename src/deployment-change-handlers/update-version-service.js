@@ -11,7 +11,7 @@ function retrieveBaseUrlFor(environmentName, service) {
       if (environment._id === environmentName) {
         if (environment.baseUrl != null) {
           baseUrl = environment.baseUrl;
-          logger.debug(`Retrieved base url [${environmentName}/${service}]: ${baseUrl}`);
+          logger.debug(`Retrieved base url [${environmentName}/${service._id}]: ${baseUrl}`);
         }
       }
     });
@@ -26,7 +26,7 @@ function retrievePingUrlFor(service) {
       if (link._id === 'ping') {
         if (link.url != null) {
           url = link.url;
-          logger.debug(`Retrieved ping url [${service}]: ${url}`);
+          logger.debug(`Retrieved ping url [${service._id}]: ${url}`);
         }
       }
     });
@@ -41,7 +41,7 @@ const updateVersionService = (deploymentObject => {
 
   const servicePromise = getService(serviceName);
   servicePromise.then(service => {
-    logger.debug(`Retrieved service [${environment}/${serviceName}]: ${JSON.stringify(service)}`);
+    logger.trace(`Retrieved service [${environment}/${serviceName}]: ${JSON.stringify(service)}`);
     const baseUrl = retrieveBaseUrlFor(environment, service);
     const pingUrl = retrievePingUrlFor(service);
     if (baseUrl == null || pingUrl == null) {

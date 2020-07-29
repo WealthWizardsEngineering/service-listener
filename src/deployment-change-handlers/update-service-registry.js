@@ -1,5 +1,4 @@
 const logger = require('../logger');
-const env = require('../env-vars');
 
 const { getIngress } = require('../kubernetes-client/get-ingress');
 const { storeService } = require('../registry-client/store-service');
@@ -78,10 +77,7 @@ const updateServiceRegistry = (deploymentObject => {
   const tags = extractTagsFrom(deploymentObject.object.metadata.annotations);
 
   getIngress(
-    env.KUBERNETES_MASTER_URL,
     namespace,
-    env.KUBERNETES_USERNAME,
-    env.KUBERNETES_PASSWORD,
     serviceName
   ).then(response => {
     logger.trace(`Retrieved ingress: ${JSON.stringify(response, null, 2)}`);

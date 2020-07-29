@@ -1,18 +1,12 @@
-const Client = require('kubernetes-client').Client;
+const k8s = require('@kubernetes/client-node');
 
-async function getIngress(masterUrl, namespace, username, password, ingressName) {
-  const client = new Client({
-    config: {
-      url: masterUrl,
-      insecureSkipTlsVerify: true,
-      auth: {
-        user: username,
-        pass: password,
-      },
-    },
-    version: '1.10',
-  });
-  return client.apis.extensions.v1beta1.namespaces(namespace).ingresses(ingressName).get();
+const kc = new k8s.KubeConfig();
+kc.loadFromDefault();
+
+const k8sApi = kc.makeApiClient(k8s.ExtensionsV1beta1Api);
+
+async function getIngress(namespace, ingressName) {
+  return k8sApi.readNamespacedIngress(ingressName, namespace);
 }
 
 module.exports = {

@@ -3,7 +3,7 @@ const proxyquire = require('proxyquire').noCallThru();
 
 test('update-service-registry', t => {
   t.test('that when a deployment changes and there is an ingress definitions then the service registry is updated with an environment url', assert => {
-    assert.plan(8);
+    assert.plan(5);
 
     const fakeDeployment = {
       object: {
@@ -49,11 +49,8 @@ test('update-service-registry', t => {
 
     const { updateServiceRegistry } = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
       '../kubernetes-client/get-ingress': {
-        getIngress: (masterUrl, namespace, username, password, serviceName) => {
-          assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
+        getIngress: (namespace, serviceName) => {
           assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
-          assert.equal(username, 'test-username', 'expected username to be passed through');
-          assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.resolve(fakeIngress);
         },
@@ -77,7 +74,7 @@ test('update-service-registry', t => {
   });
 
   t.test('that when the ingress path is not specified then it is not used in the baseUrl', assert => {
-    assert.plan(7);
+    assert.plan(4);
 
     const fakeDeployment = {
       object: {
@@ -111,11 +108,8 @@ test('update-service-registry', t => {
 
     const { updateServiceRegistry } = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
       '../kubernetes-client/get-ingress': {
-        getIngress: (masterUrl, namespace, username, password, serviceName) => {
-          assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
+        getIngress: (namespace, serviceName) => {
           assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
-          assert.equal(username, 'test-username', 'expected username to be passed through');
-          assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.resolve(fakeIngress);
         },
@@ -138,7 +132,7 @@ test('update-service-registry', t => {
   });
 
   t.test('that when the ingress path is just a slash then it is not used in the baseUrl', assert => {
-    assert.plan(7);
+    assert.plan(4);
 
     const fakeDeployment = {
       object: {
@@ -173,11 +167,8 @@ test('update-service-registry', t => {
 
     const { updateServiceRegistry } = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
       '../kubernetes-client/get-ingress': {
-        getIngress: (masterUrl, namespace, username, password, serviceName) => {
-          assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
+        getIngress: (namespace, serviceName) => {
           assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
-          assert.equal(username, 'test-username', 'expected username to be passed through');
-          assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.resolve(fakeIngress);
         },
@@ -200,7 +191,7 @@ test('update-service-registry', t => {
   });
 
   t.test('that when a deployment changes and there is no ingress definition then no base url is stored', assert => {
-    assert.plan(8);
+    assert.plan(5);
 
     const fakeDeployment = {
       object: {
@@ -219,11 +210,8 @@ test('update-service-registry', t => {
 
     const { updateServiceRegistry } = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
       '../kubernetes-client/get-ingress': {
-        getIngress: (masterUrl, namespace, username, password, serviceName) => {
-          assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
+        getIngress: (namespace, serviceName) => {
           assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
-          assert.equal(username, 'test-username', 'expected username to be passed through');
-          assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.reject(new Error('does not exist'));
         },
@@ -247,7 +235,7 @@ test('update-service-registry', t => {
   });
 
   t.test('that when a deployment changes and there are links defined as annotations then the links are stored', assert => {
-    assert.plan(8);
+    assert.plan(5);
 
     const fakeDeployment = {
       object: {
@@ -288,11 +276,8 @@ test('update-service-registry', t => {
 
     const { updateServiceRegistry } = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
       '../kubernetes-client/get-ingress': {
-        getIngress: (masterUrl, namespace, username, password, serviceName) => {
-          assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
+        getIngress: (namespace, serviceName) => {
           assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
-          assert.equal(username, 'test-username', 'expected username to be passed through');
-          assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.reject(new Error('does not exist'));
         },
@@ -316,7 +301,7 @@ test('update-service-registry', t => {
   });
 
   t.test('that when a deployment changes and ping and health are set to false then those links are not stored', assert => {
-    assert.plan(8);
+    assert.plan(5);
 
     const fakeDeployment = {
       object: {
@@ -365,11 +350,8 @@ test('update-service-registry', t => {
 
     const { updateServiceRegistry } = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
       '../kubernetes-client/get-ingress': {
-        getIngress: (masterUrl, namespace, username, password, serviceName) => {
-          assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
+        getIngress: (namespace, serviceName) => {
           assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
-          assert.equal(username, 'test-username', 'expected username to be passed through');
-          assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.resolve(fakeIngress);
         },
@@ -393,7 +375,7 @@ test('update-service-registry', t => {
   });
 
   t.test('that when a deployment changes and there are tags defined as annotations then the tags are stored', assert => {
-    assert.plan(7);
+    assert.plan(4);
 
     const fakeDeployment = {
       object: {
@@ -413,11 +395,8 @@ test('update-service-registry', t => {
 
     const { updateServiceRegistry } = proxyquire('../../../src/deployment-change-handlers/update-service-registry', {
       '../kubernetes-client/get-ingress': {
-        getIngress: (masterUrl, namespace, username, password, serviceName) => {
-          assert.equal(masterUrl, 'test-masterUrl', 'expected url to be passed through');
+        getIngress: (namespace, serviceName) => {
           assert.equal(namespace, 'fakeNamespace', 'expected namespace to be passed through');
-          assert.equal(username, 'test-username', 'expected username to be passed through');
-          assert.equal(password, 'test-password', 'expected password to be passed through');
           assert.equal(serviceName, 'fakeServiceName', 'expected serviceName to be passed through');
           return Promise.reject(new Error('does not exist'));
         },

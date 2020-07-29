@@ -182,7 +182,6 @@ test('store service', t => {
       });
   });
 
-
   t.test('that when the service exists with an environment and a different environment is added then all environments should be posted', assert => {
     assert.plan(3);
     const sandbox = sinon.createSandbox();
