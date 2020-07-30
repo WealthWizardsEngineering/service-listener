@@ -52,7 +52,7 @@ const storeService = (serviceName, environment, links = null, tags = null) => co
   if (!updateEnvironmentBaseUrl(updatedService, environment._id, environment.baseUrl)) {
     updatedService.environments.push(environment);
   }
-  logger.debug(`Updating existing service: ${JSON.stringify(updatedService, null, 2)}`);
+  logger.trace(`Updating existing service: ${JSON.stringify(updatedService, null, 2)}`);
 
   return request({
     url: `${env.SERVICE_REGISTRY_URL}/v1/service/${serviceName}`,
