@@ -41,7 +41,7 @@
     "json-stream": "^1.0.0",
     "request": "^2.88.2",
     "request-promise-native": "1.0.9",
-    "@dot-i/k8s-operator": "1.0.8",
+    "@dot-i/k8s-operator": "1.0.9",
     "@kubernetes/client-node": "^0.12.0"
   }
 }
