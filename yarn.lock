@@ -3094,10 +3094,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-synp@1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/synp/-/synp-1.8.0.tgz#c26a03f145a8849de1957e9af035a64eb3311020"
-  integrity sha512-IH7Y1o5DR8aCRvF5RTLSWcj/XQ+FZIFHROjA1tFZqaa+5nYdP++FNqKUFbTWGx45QtjUoQQHoRk31259STAhfg==
+synp@1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/synp/-/synp-1.8.1.tgz#88d10ede51293561e2bca2617f74a46be25334b9"
+  integrity sha512-0CM76TYBCoEvSwQWJ1/RnEf+vGw96yktW5iT5y4ZW0j2oUNL0afAzEOuC2yoF5xQ1Em/pVTsDMYBPz/f8seLow==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
     bash-glob "^2.0.0"
