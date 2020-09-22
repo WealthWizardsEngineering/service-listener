@@ -721,7 +721,7 @@ commander@^2.11.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^6.0.0:
+commander@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-6.1.0.tgz#f8d722b78103141006b66f4c7ba1e97315ba75bc"
   integrity sha512-wl7PNrYWd2y5mp1OK/LhTlv8Ff4kQJQRXXAvF+uU/TPNiVJUxZLRYGj/B0y/lPGAVcSbJqH2Za/cvHmrPMC8mA==
@@ -3102,15 +3102,15 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-synp@1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/synp/-/synp-1.8.1.tgz#88d10ede51293561e2bca2617f74a46be25334b9"
-  integrity sha512-0CM76TYBCoEvSwQWJ1/RnEf+vGw96yktW5iT5y4ZW0j2oUNL0afAzEOuC2yoF5xQ1Em/pVTsDMYBPz/f8seLow==
+synp@1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/synp/-/synp-1.8.2.tgz#ee191f7c935ebf81020c41ee019e61d409bd8b3d"
+  integrity sha512-BynZmRh5NDcTJtheXO4GKJqd3Ee4A+aKScx4R/oRcJQUU65kYgEgKgPY0VS6r612+cR99ZYY2jef9FaU6C+EQw==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
     bash-glob "^2.0.0"
     colors "^1.4.0"
-    commander "^6.0.0"
+    commander "^6.1.0"
     eol "^0.9.1"
     lodash "4.17.20"
     nmtree "^1.0.6"
