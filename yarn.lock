@@ -177,17 +177,16 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@dot-i/k8s-operator@1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@dot-i/k8s-operator/-/k8s-operator-1.0.13.tgz#0221cd4ed1a77757f3ab5ff4fbe24387f92fcf8b"
-  integrity sha512-xjQCd0gLIkmkGxsNfKPEX7PONrG5o3iuyPInmNX7/f70noHg0V3m2tzSx4iLnUK0NjXko6wsS17mZic1y6sMnQ==
+"@dot-i/k8s-operator@1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@dot-i/k8s-operator/-/k8s-operator-1.0.17.tgz#af8aea285fba44f5f812ee78101b18fc822f3d3e"
+  integrity sha512-TfgDDWce4MJx+nongaWM7OKHCpjCc8iYrPrym/2Go7ki1qUajqBMkiM0p4aimoOiGhD6YKmnbSm1je6K0rGAZg==
   dependencies:
-    "@kubernetes/client-node" "^0.12.1"
+    "@kubernetes/client-node" "^0.13.0"
     async "^3.2.0"
+    axios "^0.21.0"
     js-yaml "^3.14.0"
-    request "^2.88.2"
-    request-promise-native "^1.0.9"
-    stream-buffers "^3.0.2"
+    serialize-error "^7.0.1"
 
 "@eslint/eslintrc@^0.2.1":
   version "0.2.1"
@@ -221,10 +220,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@kubernetes/client-node@^0.12.1":
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/@kubernetes/client-node/-/client-node-0.12.2.tgz#8728684bd57d1cbcbe14fe742e79be7021403eea"
-  integrity sha512-J0UwyFl1Iv/IZ6WMP7LaizBEoKPnqwtc8tIO2q/X+EuDT7eGpPPAMHXSEOC/EI9JGIf0FaJEcDHhB/Dio/mKhw==
+"@kubernetes/client-node@^0.12.3":
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/@kubernetes/client-node/-/client-node-0.12.3.tgz#5a6bdde428f3a4be306c6db2bdae27688a2c60b6"
+  integrity sha512-+Qq/WRbHIqL791JO6d3l/aupU922sriknCOsB63YjW9KVykX6/RTuPFDptfbWBVfPB3lRmhbjur95DIej1bAqA==
   dependencies:
     "@types/js-yaml" "^3.12.1"
     "@types/node" "^10.12.0"
@@ -249,10 +248,10 @@
     underscore "^1.9.1"
     ws "^7.3.1"
 
-"@kubernetes/client-node@^0.12.3":
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/@kubernetes/client-node/-/client-node-0.12.3.tgz#5a6bdde428f3a4be306c6db2bdae27688a2c60b6"
-  integrity sha512-+Qq/WRbHIqL791JO6d3l/aupU922sriknCOsB63YjW9KVykX6/RTuPFDptfbWBVfPB3lRmhbjur95DIej1bAqA==
+"@kubernetes/client-node@^0.13.0":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/@kubernetes/client-node/-/client-node-0.13.2.tgz#881eb407afbd5b499e5daf898ffcc40f839709e7"
+  integrity sha512-ufvGfjBXuy5LbZTJZ8bd1eRVgWUd9rRDCryMWNfxb4372Q60R1oG8qy7svUB9NqBmwFgKHuaXkrfq3rFFbGrew==
   dependencies:
     "@types/js-yaml" "^3.12.1"
     "@types/node" "^10.12.0"
@@ -584,6 +583,13 @@ aws4@^1.8.0:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.1.tgz#e1e82e4f3e999e2cfd61b161280d16a111f86428"
   integrity sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
+
+axios@^0.21.0:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 babel-eslint@10.1.0:
   version "10.1.0"
@@ -1400,6 +1406,11 @@ flatted@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
+
+follow-redirects@^1.10.0:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
+  integrity sha512-SSG5xmZh1mkPGyKzjZP8zLjltIfpW32Y5QpdNJyjcfGxK3qo3NDDkZOZSFiGn1A6SclQxY9GzEwAHQ3dmYRWpg==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -2709,7 +2720,7 @@ request-promise-core@1.1.4:
   dependencies:
     lodash "^4.17.19"
 
-request-promise-native@1.0.9, request-promise-native@^1.0.9:
+request-promise-native@1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/request-promise-native/-/request-promise-native-1.0.9.tgz#e407120526a5efdc9a39b28a5679bf47b9d9dc28"
   integrity sha512-wcW+sIUiWnKgNY0dqCpOZkUbF/I+YPi+f09JZIDa39Ec+q82CpSYniDp+ISgTTbKmnpJWASeJBPZmoxH84wt3g==
@@ -2851,6 +2862,13 @@ semver@^7.2.1, semver@^7.3.2:
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
   integrity sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
+
+serialize-error@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-7.0.1.tgz#f1360b0447f61ffb483ec4157c737fab7d778e18"
+  integrity sha512-8I8TjW5KMOKsZQTvoxjuSIa7foAwPWGOts+6o7sgjz41/qMD9VQHEDxi6PBvK2l0MXUmqZyNpUK+T2tQaaElvw==
+  dependencies:
+    type-fest "^0.13.1"
 
 set-blocking@^2.0.0:
   version "2.0.0"
@@ -3243,6 +3261,11 @@ type-detect@4.0.8, type-detect@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
   integrity sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
+
+type-fest@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.13.1.tgz#0172cb5bce80b0bd542ea348db50c7e21834d934"
+  integrity sha512-34R7HTnG0XIJcBSn5XhDd7nNFPRcXYRZrBB2O2jdKqYODldSzBAqzsWoZYYvduky73toYS/ESqxPvkDf/F0XMg==
 
 type-fest@^0.8.0, type-fest@^0.8.1:
   version "0.8.1"
