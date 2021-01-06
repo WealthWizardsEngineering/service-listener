@@ -3117,10 +3117,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-synp@1.9.4:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/synp/-/synp-1.9.4.tgz#97050123ad4f4e4b0442ebcbbe26a29703fc9b06"
-  integrity sha512-cmRahSjX5flSUyazBsgzyPts+NlOyP5IIpvcaVNlLlcOQjFF0vDQCL64i0L4EIGcCZj8NZoTvrUzlzITtXS9Rg==
+synp@1.9.5:
+  version "1.9.5"
+  resolved "https://registry.yarnpkg.com/synp/-/synp-1.9.5.tgz#9a8f86d9d989252a79a288e9ac2f22abffdf319b"
+  integrity sha512-JwGUuXKFV8Htvg7yU+Slufgb9V8jcLI04xxP6GL4UfuL423qcsR58CRUxk9WON6KLuLrF0ogYA8QpXBI6kU/KQ==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
     bash-glob "^2.0.0"
@@ -3129,7 +3129,6 @@ synp@1.9.4:
     eol "^0.9.1"
     lodash "4.17.20"
     nmtree "^1.0.6"
-    request "^2.88.2"
     semver "^7.3.2"
     sort-object-keys "^1.1.3"
 
