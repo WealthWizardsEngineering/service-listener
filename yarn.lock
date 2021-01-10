@@ -220,35 +220,7 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@kubernetes/client-node@^0.12.3":
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/@kubernetes/client-node/-/client-node-0.12.3.tgz#5a6bdde428f3a4be306c6db2bdae27688a2c60b6"
-  integrity sha512-+Qq/WRbHIqL791JO6d3l/aupU922sriknCOsB63YjW9KVykX6/RTuPFDptfbWBVfPB3lRmhbjur95DIej1bAqA==
-  dependencies:
-    "@types/js-yaml" "^3.12.1"
-    "@types/node" "^10.12.0"
-    "@types/request" "^2.47.1"
-    "@types/stream-buffers" "^3.0.3"
-    "@types/tar" "^4.0.3"
-    "@types/underscore" "^1.8.9"
-    "@types/ws" "^6.0.1"
-    byline "^5.0.0"
-    execa "1.0.0"
-    isomorphic-ws "^4.0.1"
-    js-yaml "^3.13.1"
-    jsonpath-plus "^0.19.0"
-    openid-client "^4.1.1"
-    request "^2.88.0"
-    rfc4648 "^1.3.0"
-    shelljs "^0.8.2"
-    stream-buffers "^3.0.2"
-    tar "^6.0.2"
-    tmp-promise "^3.0.2"
-    tslib "^1.9.3"
-    underscore "^1.9.1"
-    ws "^7.3.1"
-
-"@kubernetes/client-node@^0.13.0":
+"@kubernetes/client-node@^0.13.0", "@kubernetes/client-node@^0.13.1":
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@kubernetes/client-node/-/client-node-0.13.2.tgz#881eb407afbd5b499e5daf898ffcc40f839709e7"
   integrity sha512-ufvGfjBXuy5LbZTJZ8bd1eRVgWUd9rRDCryMWNfxb4372Q60R1oG8qy7svUB9NqBmwFgKHuaXkrfq3rFFbGrew==
