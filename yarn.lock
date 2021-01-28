@@ -177,15 +177,15 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@dot-i/k8s-operator@1.0.17":
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/@dot-i/k8s-operator/-/k8s-operator-1.0.17.tgz#af8aea285fba44f5f812ee78101b18fc822f3d3e"
-  integrity sha512-TfgDDWce4MJx+nongaWM7OKHCpjCc8iYrPrym/2Go7ki1qUajqBMkiM0p4aimoOiGhD6YKmnbSm1je6K0rGAZg==
+"@dot-i/k8s-operator@1.0.19":
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/@dot-i/k8s-operator/-/k8s-operator-1.0.19.tgz#1b634cc5dffb1af65e4394ba48e8fd0cd762271a"
+  integrity sha512-2ueMlk9CMpqRuj+Qh3qMDgr/slrMhsogNF/yX51gyDV97G9ehLh+SkNwgTNqcWxwu7dantR6vGMHE5s0tqOn5w==
   dependencies:
-    "@kubernetes/client-node" "^0.13.0"
+    "@kubernetes/client-node" "^0.13.2"
     async "^3.2.0"
-    axios "^0.21.0"
-    js-yaml "^3.14.0"
+    axios "^0.21.1"
+    js-yaml "^3.14.1"
     serialize-error "^7.0.1"
 
 "@eslint/eslintrc@^0.2.2":
@@ -248,7 +248,7 @@
     underscore "^1.9.1"
     ws "^7.3.1"
 
-"@kubernetes/client-node@^0.13.0":
+"@kubernetes/client-node@^0.13.2":
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@kubernetes/client-node/-/client-node-0.13.2.tgz#881eb407afbd5b499e5daf898ffcc40f839709e7"
   integrity sha512-ufvGfjBXuy5LbZTJZ8bd1eRVgWUd9rRDCryMWNfxb4372Q60R1oG8qy7svUB9NqBmwFgKHuaXkrfq3rFFbGrew==
@@ -581,7 +581,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.1.tgz#e1e82e4f3e999e2cfd61b161280d16a111f86428"
   integrity sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
 
-axios@^0.21.0:
+axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
@@ -1971,10 +1971,18 @@ js-tokens@^4.0.0:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
-js-yaml@^3.13.1, js-yaml@^3.14.0:
+js-yaml@^3.13.1:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.0.tgz#a7a34170f26a21bb162424d8adacb4113a69e482"
   integrity sha512-/4IbIeHcD9VMHFqDR/gQ7EdZdLimOvW2DdcxFjdyyZ9NsbS+ccrXqVWDtab/lRl5AlUqmpBx8EhPaWR+OtY17A==
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
+
+js-yaml@^3.14.1:
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
+  integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
