@@ -34,7 +34,7 @@
     "tape": "5.1.1"
   },
   "dependencies": {
-    "bunyan": "2.0.4",
+    "bunyan": "2.0.5",
     "co": "4.6.0",
     "consul": "0.39.0",
     "envalid": "6.0.2",
