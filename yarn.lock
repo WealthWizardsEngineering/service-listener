@@ -646,10 +646,10 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-bunyan@2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/bunyan/-/bunyan-2.0.4.tgz#b3aa2b75905fa7e35df3ba8f669de276e86d8159"
-  integrity sha512-wJWl1J0aO+AJV+mEXh5jr2jiSUo+JJHQZ/P2z0JSFJidFAWuJPafD+IhE8BeQNMBZyldA9Y3GDR1U15zAAaJHA==
+bunyan@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/bunyan/-/bunyan-2.0.5.tgz#9dd056755220dddd8b5bb9cf76f3d0d766e96e71"
+  integrity sha512-Jvl74TdxCN6rSP9W1I6+UOUtwslTDqsSFkDqZlFb/ilaSvQ+bZAnXT/GT97IZ5L+Vph0joPZPhxUyn6FLNmFAA==
   dependencies:
     exeunt "1.1.0"
   optionalDependencies:
