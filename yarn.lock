@@ -177,10 +177,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@dot-i/k8s-operator@1.0.19":
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/@dot-i/k8s-operator/-/k8s-operator-1.0.19.tgz#1b634cc5dffb1af65e4394ba48e8fd0cd762271a"
-  integrity sha512-2ueMlk9CMpqRuj+Qh3qMDgr/slrMhsogNF/yX51gyDV97G9ehLh+SkNwgTNqcWxwu7dantR6vGMHE5s0tqOn5w==
+"@dot-i/k8s-operator@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@dot-i/k8s-operator/-/k8s-operator-1.1.0.tgz#f829ee62c2ea05bfc483f34e900c2c87b858c0ae"
+  integrity sha512-VesyKXWkvjsauFmQXzNr9haCOjyeENRLX+xiqmXX5Nz402TXDuUhJ2ORmrD1SM0Nlg4Ba9/9Y5r7mx16AkUU4g==
   dependencies:
     "@kubernetes/client-node" "^0.13.2"
     async "^3.2.0"
