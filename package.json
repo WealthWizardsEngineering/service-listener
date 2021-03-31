@@ -36,7 +36,7 @@
   "dependencies": {
     "bunyan": "2.0.5",
     "co": "4.6.0",
-    "consul": "0.39.0",
+    "consul": "0.40.0",
     "envalid": "6.0.2",
     "json-stream": "^1.0.0",
     "request": "^2.88.2",
