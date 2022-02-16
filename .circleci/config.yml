@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -23,7 +23,8 @@ jobs:
           name: unit-tests
           command: yarn test:unit
   buildAndDeploy:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - add_ssh_keys
       - checkout
@@ -49,7 +50,8 @@ jobs:
             docker push quay.io/wealthwizards/service-listener
             docker push quay.io/wealthwizards/service-listener:$(cat .version)
   buildDockerImage:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - add_ssh_keys
       - checkout
