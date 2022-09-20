@@ -1,4 +1,4 @@
-FROM quay.io/wealthwizards/ww-base-node:alpine-14
+FROM quay.io/wealthwizards/ww-base-node:alpine-16
 
 WORKDIR /usr/src/app
 

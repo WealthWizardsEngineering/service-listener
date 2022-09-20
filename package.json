@@ -2,7 +2,7 @@
   "name": "service-listener",
   "version": "0.1.75",
   "engines": {
-    "node": "^14"
+    "node": "^16"
   },
   "description": "A script to listen to kubernetes to automatically identify running deployments/services",
   "homepage": "https://github.com/WealthWizardsEngineering/service-listener",
@@ -41,5 +41,8 @@
     "request-promise-native": "^1.0.9",
     "@dot-i/k8s-operator": "^1.2.0",
     "@kubernetes/client-node": "^0.16.1"
+  },
+  "resolutions": {
+    "bunyan/moment": "2.29.4"
   }
 }
